@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
@@ -56,7 +57,7 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-2">{t('contact.call')}</h3>
               <p className="text-gray-600">
-                +374 10 123456<br />
+                +374 41 100880<br />
                 {t('contact.workingHours')}
               </p>
             </div>
@@ -67,8 +68,8 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-2">{t('contact.email')}</h3>
               <p className="text-gray-600">
-                info@zenith.am<br />
-                support@zenith.am
+                info@zenithacademy.am<br />
+                support@zenithacademy.am
               </p>
             </div>
           </div>

@@ -1,12 +1,15 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+
 const Footer: React.FC = () => {
   const {
     t
   } = useLanguage();
   const currentYear = new Date().getFullYear();
+  
   const handleLanguageClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const menuElement = document.querySelector('header [role="menu"]');
@@ -14,6 +17,7 @@ const Footer: React.FC = () => {
       menuElement.click();
     }
   };
+  
   return <footer className="bg-jet text-whiteSmoke py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -73,11 +77,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-rustyRed shrink-0" />
-                <span className="text-gray-400">+374 10 123456</span>
+                <span className="text-gray-400">+374 41 100880</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-rustyRed shrink-0" />
-                <span className="text-gray-400">info@zenith.am</span>
+                <span className="text-gray-400">info@zenithacademy.am</span>
               </li>
             </ul>
           </div>
@@ -86,13 +90,13 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">{t('footer.follow')}</h3>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/zenithacademy" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/zenithacademy_" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/zenithacademy/" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -111,4 +115,5 @@ const Footer: React.FC = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
