@@ -67,8 +67,8 @@ const translations = {
   },
   'hero.subtitle': {
     am: 'ՆՈՐԱՐԱՐԱԿԱՆ ԿՐԹՈՒԹՅՈՒՆ՝ ԼՈՒՍԱՎՈՐ ԱՊԱԳԱՅԻ ՀԱՄԱՐ',
-    fr: 'L\'avenir de l\'éducation technologique',
-    en: 'The Future of Technology Education'
+    fr: 'L\'ÉDUCATION INNOVANTE POUR UN AVENIR BRILLANT',
+    en: 'INNOVATIVE EDUCATION FOR A BRIGHT FUTURE'
   },
   'hero.description': {
     am: '2022թ.-ին հիմնված «ՏՈՒԿ-ՖԱԱՌԱԼՊ» կրթական հիմնադրամի «Զենիթ» ակադեմիան հայ-ֆրանսիական համագործակցության արդյունք է, որի առաքելությունն է խթանել Հայաստանում տեխնոլոգիական կրթության ապակենտրոնացված զարգացումը՝ համապատասխան միջազգային լավագույն չափանիշներին:',
@@ -191,7 +191,7 @@ const translations = {
     en: 'Participant Teachers'
   },
   'results.participantSpecialists': {
-    am: 'Մասնակից մեծահասակ',
+    am: 'Մասնակից մասնագետ',
     fr: 'Spécialistes participants',
     en: 'Participant Specialists'
   },
@@ -201,8 +201,8 @@ const translations = {
     en: 'Participating Cities'
   },
   'results.participatingGroups': {
-    am: 'Մասնակից վերապատրաստման յուրաքանչյուր խմբում',
-    fr: 'Dans chaque groupe de formation participant',
+    am: 'Մասնակից յուրաքանչյուր վերապատրաստման խմբում',
+    fr: 'Participants dans chaque groupe de formation',
     en: 'In each participating training group'
   },
   
@@ -229,7 +229,7 @@ const translations = {
   },
   'team.hasmikRole': {
     am: 'Գործադիր տնօրեն',
-    fr: 'Directeur exécutif',
+    fr: 'Directrice exécutive',
     en: 'Executive Director'
   },
   'team.hagop': {
@@ -249,7 +249,7 @@ const translations = {
   },
   'team.varadzakRole': {
     am: 'Դասավանդող ավագ մասնագետ',
-    fr: 'Spécialiste senior enseignant',
+    fr: 'Spécialiste senior en enseignement',
     en: 'Senior Teaching Specialist'
   },
   'team.anna': {
@@ -281,6 +281,28 @@ const translations = {
     am: 'Ֆինանսական խորհրդատու',
     fr: 'Conseiller financier',
     en: 'Financial Advisor'
+  },
+  
+  // News page translations
+  'news.description': {
+    am: 'Հետևեք «Զենիթ» ակադեմիայի վերջին զարգացումներին, միջոցառումներին և հայտարարություններին։',
+    fr: 'Restez à jour avec les derniers développements, événements et annonces de l\'Académie Zénith.',
+    en: 'Stay updated with the latest developments, events, and announcements from Zenith Academy.'
+  },
+  'news.readMore': {
+    am: 'Կարդալ ավելին',
+    fr: 'Lire plus',
+    en: 'Read more'
+  },
+  'news.empty': {
+    am: 'Նորությունները բացակայում են',
+    fr: 'Pas d\'actualités disponibles',
+    en: 'No news available'
+  },
+  'news.comingSoon': {
+    am: 'Շուտով կավելացվեն նոր հոդվածներ',
+    fr: 'De nouveaux articles seront ajoutés bientôt',
+    en: 'New articles will be added soon'
   }
 };
 

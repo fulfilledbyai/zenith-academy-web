@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -27,9 +28,15 @@ export const NewsForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
 
-  // Load existing news items
+  // Load existing news items - but skip placeholder news
   useEffect(() => {
-    const loadedNews = JSON.parse(localStorage.getItem('newsItems') || '[]') as NewsItem[];
+    let loadedNews = JSON.parse(localStorage.getItem('newsItems') || '[]') as NewsItem[];
+    
+    // Filter out placeholder news items (they have IDs 1, 2, 3)
+    loadedNews = loadedNews.filter(item => item.id > 3);
+    
+    // Save the filtered list back to localStorage
+    localStorage.setItem('newsItems', JSON.stringify(loadedNews));
     setNewsItems(loadedNews);
   }, []);
 
