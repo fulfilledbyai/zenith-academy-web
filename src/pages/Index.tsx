@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
@@ -22,20 +21,20 @@ const Index = () => {
 
   const features = [{
     icon: <Lightbulb className="w-8 h-8 text-selectiveYellow" />,
-    title: 'Innovation',
-    description: 'Cutting-edge technological education and innovative teaching methods'
+    title: t('features.innovation.title'),
+    description: t('features.innovation.description')
   }, {
     icon: <Users className="w-8 h-8 text-selectiveYellow" />,
-    title: 'Collaboration',
-    description: 'French-Armenian collaboration bringing international expertise'
+    title: t('features.collaboration.title'),
+    description: t('features.collaboration.description')
   }, {
     icon: <Globe className="w-8 h-8 text-selectiveYellow" />,
-    title: 'Decentralization',
-    description: 'Promoting decentralized development of education across Armenia'
+    title: t('features.decentralization.title'),
+    description: t('features.decentralization.description')
   }, {
     icon: <GraduationCap className="w-8 h-8 text-selectiveYellow" />,
-    title: 'Excellence',
-    description: 'Education aligned with the best international standards'
+    title: t('features.excellence.title'),
+    description: t('features.excellence.description')
   }];
 
   const results = [{
@@ -163,11 +162,10 @@ const Index = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold mb-6">Zenith Academy</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('features.title')}</h2>
             <div className="h-1 w-20 bg-rustyRed mx-auto mb-6"></div>
             <p className="text-lg text-gray-600">
-              Established through the collaboration between Armenian and French educational experts,
-              our academy provides cutting-edge technological education.
+              {t('features.description')}
             </p>
           </div>
 
@@ -187,9 +185,9 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-r from-rustyRed to-[#e6453d] text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Ready to Start Your Learning Journey?</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('features.cta.title')}</h2>
             <p className="text-lg mb-8">
-              Explore our courses and take the first step towards a brighter future with Zenith Academy.
+              {t('features.cta.description')}
             </p>
             <Button asChild size="lg" className="bg-white text-rustyRed hover:bg-gray-100">
               <Link to="/courses">

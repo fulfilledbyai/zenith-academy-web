@@ -1,4 +1,3 @@
-
 const translations = {
   // Navigation
   'nav.home': {
@@ -274,12 +273,12 @@ const translations = {
   },
   'team.ashot': {
     am: 'Աշոտ Առաքելյան',
-    fr: 'Ashot Arakelyan',
-    en: 'Ashot Arakelyan'
+    fr: 'Conseiller financier',
+    en: 'Financial Advisor'
   },
   'team.ashotRole': {
     am: 'Ֆինանսական խորհրդատու',
-    fr: 'Conseiller financier',
+    fr: 'Ashot Arakelyan',
     en: 'Financial Advisor'
   },
   
@@ -303,6 +302,67 @@ const translations = {
     am: 'Շուտով կավելացվեն նոր հոդվածներ',
     fr: 'De nouveaux articles seront ajoutés bientôt',
     en: 'New articles will be added soon'
+  },
+  // Features Section
+  'features.title': {
+    am: 'Զենիթ Ակադեմիա',
+    fr: 'Académie Zénith',
+    en: 'Zenith Academy'
+  },
+  'features.description': {
+    am: 'Հայ և ֆրանսիացի կրթական փորձագետների համագործակցության շնորհիվ, մեր ակադեմիան տրամադրում է նորարարական տեխնոլոգիական կրթություն:',
+    fr: 'Établie par la collaboration entre experts éducatifs arméniens et français, notre académie offre une éducation technologique de pointe.',
+    en: 'Established through the collaboration between Armenian and French educational experts, our academy provides cutting-edge technological education.'
+  },
+  'features.innovation.title': {
+    am: 'Նորարարություն',
+    fr: 'Innovation',
+    en: 'Innovation'
+  },
+  'features.innovation.description': {
+    am: 'Նորարարական տեխնոլոգիական կրթություն և դասավանդման ժամանակակից մեթոդներ',
+    fr: 'Éducation technologique de pointe et méthodes d\'enseignement innovantes',
+    en: 'Cutting-edge technological education and innovative teaching methods'
+  },
+  'features.collaboration.title': {
+    am: 'Համագործակցություն',
+    fr: 'Collaboration',
+    en: 'Collaboration'
+  },
+  'features.collaboration.description': {
+    am: 'Հայ-ֆրանսիական համագործակցություն, որը բերում է միջազգային փորձ',
+    fr: 'Collaboration franco-arménienne apportant une expertise internationale',
+    en: 'French-Armenian collaboration bringing international expertise'
+  },
+  'features.decentralization.title': {
+    am: 'Ապակենտրոնացում',
+    fr: 'Décentralisation',
+    en: 'Decentralization'
+  },
+  'features.decentralization.description': {
+    am: 'Կրթության ապակենտրոնացված զարգացման խթանում Հայաստանի տարածքում',
+    fr: 'Promotion du développement décentralisé de l\'éducation à travers l\'Arménie',
+    en: 'Promoting decentralized development of education across Armenia'
+  },
+  'features.excellence.title': {
+    am: 'Գերազանցություն',
+    fr: 'Excellence',
+    en: 'Excellence'
+  },
+  'features.excellence.description': {
+    am: 'Կրթություն, որը համապատասխանում է լավագույն միջազգային չափանիշներին',
+    fr: 'Éducation alignée sur les meilleures normes internationales',
+    en: 'Education aligned with the best international standards'
+  },
+  'features.cta.title': {
+    am: 'Պատրա՞ստ եք սկսել Ձեր ուսուցման ճանապարհը',
+    fr: 'Prêt à commencer votre parcours d\'apprentissage ?',
+    en: 'Ready to Start Your Learning Journey?'
+  },
+  'features.cta.description': {
+    am: 'Ուսումնասիրեք մեր դասընթացները և կատարեք առաջին քայլը դեպի ավելի պայծառ ապագա «Զենիթ» ակադեմիայի հետ:',
+    fr: 'Explorez nos cours et faites le premier pas vers un avenir plus brillant avec l\'Académie Zénith.',
+    en: 'Explore our courses and take the first step towards a brighter future with Zenith Academy.'
   }
 };
 
