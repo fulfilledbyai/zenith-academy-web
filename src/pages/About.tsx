@@ -18,7 +18,7 @@ const About = () => {
             <div className="max-w-3xl">
               <h1 className="text-4xl font-bold mb-6">{t('about.foundation')}</h1>
               <p className="text-xl">
-                Learn about the TOUK-FAARALP Educational Foundation and its mission.
+                {t('about.foundation.description')}
               </p>
             </div>
           </div>
@@ -32,7 +32,7 @@ const About = () => {
               </div>
               
               <div>
-                <h2 className="text-3xl font-bold mb-6">ՏՈՒԿ-ՖԱԱՌԱԼՊ</h2>
+                <h2 className="text-3xl font-bold mb-6">{t('about.foundation')}</h2>
                 <div className="h-1 w-20 bg-rustyRed mb-6"></div>
                 <p className="text-lg text-gray-700 mb-6">
                   {t('foundation.description')}
@@ -42,6 +42,46 @@ const About = () => {
                     {t('about.backButton')}
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+  
+  if (section === 'faaralp') {
+    return (
+      <Layout>
+        <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl font-bold mb-6">{t('about.faaralp')}</h1>
+              <p className="text-xl">
+                {t('about.faaralp.description')}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-6">FAARALP</h2>
+                <div className="h-1 w-20 bg-rustyRed mb-6"></div>
+                <p className="text-lg text-gray-700 mb-6">
+                  {t('foundation.description')}
+                </p>
+                <Button asChild className="mt-4 bg-rustyRed hover:bg-rustyRed/90 text-white">
+                  <Link to="/about">
+                    {t('about.backButton')}
+                  </Link>
+                </Button>
+              </div>
+              
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" alt="FAARALP Team" className="w-full h-auto" />
               </div>
             </div>
           </div>
@@ -113,6 +153,11 @@ const About = () => {
                   <Link to="/about/foundation">
                     {t('about.foundation')}
                     <ChevronRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">
+                  <Link to="/about/faaralp">
+                    {t('about.faaralp')}
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">

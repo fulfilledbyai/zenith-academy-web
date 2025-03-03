@@ -48,12 +48,17 @@ const translations = {
     en: 'For Technical College Students'
   },
   'about.foundation': {
-    am: 'Հիմնադրամ',
-    fr: 'Fondation',
-    en: 'Foundation'
+    am: '«Զենիթ» հիմնադրամ',
+    fr: 'Fondation Zenith',
+    en: 'Zenith Foundation'
+  },
+  'about.faaralp': {
+    am: 'FAARALP',
+    fr: 'FAARALP',
+    en: 'FAARALP'
   },
   'about.sevan': {
-    am: 'Սևանի կենտրոնը',
+    am: '«Սևանի կենտրոնը»',
     fr: 'Centre de Sevan',
     en: 'Sevan Center'
   },
@@ -428,16 +433,32 @@ const translations = {
     fr: 'Découvrez l\'Académie Zénith, notre mission, notre vision et les valeurs qui guident notre approche éducative.',
     en: 'Learn about Zenith Academy, our mission, vision, and the values that drive our educational approach.'
   },
+  
   'about.sevan.description': {
     am: 'Ծանոթացեք մեր կրթական կենտրոնին Սևանում, Հայաստան։',
     fr: 'Découvrez notre centre éducatif à Sevan, Arménie.',
     en: 'Learn about our educational center in Sevan, Armenia.'
   },
+  
+  'about.faaralp.description': {
+    am: 'Ծանոթացեք FAARALP-ին և նրա դերին «Զենիթ» ակադեմիայի զարգացման մեջ։',
+    fr: 'Découvrez FAARALP et son rôle dans le développement de l\'Académie Zénith.',
+    en: 'Learn about FAARALP and its role in the development of Zenith Academy.'
+  },
+  
+  'about.foundation.description': {
+    am: 'Ծանոթացեք «Զենիթ» հիմնադրամին և նրա առաքելությանը։',
+    fr: 'Découvrez la Fondation Zenith et sa mission.',
+    en: 'Learn about the Zenith Foundation and its mission.'
+  },
+  
   'about.backButton': {
     am: 'Վերադառնալ',
     fr: 'Retour',
     en: 'Back to About'
   },
+  
+  // Contact page translations
   'contact.mainCampus': {
     am: 'Գլխավոր համալսարանական շենք',
     fr: 'Bâtiment principal du campus',

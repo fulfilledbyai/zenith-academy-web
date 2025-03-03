@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
@@ -47,6 +48,9 @@ const Header: React.FC = () => {
     submenu: [{
       label: t('about.foundation'),
       path: '/about/foundation'
+    }, {
+      label: t('about.faaralp'),
+      path: '/about/faaralp'
     }, {
       label: t('about.sevan'),
       path: '/about/sevan-center'
