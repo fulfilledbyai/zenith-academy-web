@@ -5,20 +5,17 @@ import { ChevronRight, Lightbulb, Users, Globe, GraduationCap } from 'lucide-rea
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
 const Index = () => {
   const {
     t
   } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
-  
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
-
   const features = [{
     icon: <Lightbulb className="w-8 h-8 text-selectiveYellow" />,
     title: t('features.innovation.title'),
@@ -36,7 +33,6 @@ const Index = () => {
     title: t('features.excellence.title'),
     description: t('features.excellence.description')
   }];
-
   const results = [{
     number: '3',
     text: t('results.trainingAreas')
@@ -62,7 +58,6 @@ const Index = () => {
     number: '12',
     text: t('results.participatingGroups')
   }];
-
   return <Layout>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
@@ -115,7 +110,7 @@ const Index = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-lg overflow-hidden shadow-lg">
-              <img src="/lovable-uploads/22ba7e57-e9d6-4882-8081-3eb0c0976729.png" alt="Zenith Academy Workshop" className="w-full h-auto" />
+              <img alt="Zenith Academy Workshop" className="w-full h-auto" src="/lovable-uploads/1831b9bd-c51f-4953-983b-b0d48858eb81.jpg" />
             </div>
             
             <div>
@@ -200,5 +195,4 @@ const Index = () => {
       </section>
     </Layout>;
 };
-
 export default Index;
