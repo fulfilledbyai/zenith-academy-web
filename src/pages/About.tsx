@@ -134,18 +134,18 @@ const About = () => {
               <div className="flex flex-wrap gap-4">
                 <Button asChild className="bg-rustyRed hover:bg-rustyRed/90 text-white">
                   <Link to="/about/foundation">
-                    SFT FAARALP
+                    CFT FAARALP
                     <ChevronRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">
-                  <Link to="/about/sevan-center">
-                    {t('about.sevan')}
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">
                   <Link to="/about/faaralp">
                     FAARALP
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">
+                  <Link to="/about/sevan-center">
+                    {t('about.sevan')}
                   </Link>
                 </Button>
               </div>
