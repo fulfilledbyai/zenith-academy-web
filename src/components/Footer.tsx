@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const {
+    t
+  } = useLanguage();
   const currentYear = new Date().getFullYear();
-
   const handleLanguageClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const menuElement = document.querySelector('header [role="menu"]');
@@ -15,19 +14,13 @@ const Footer: React.FC = () => {
       menuElement.click();
     }
   };
-
-  return (
-    <footer className="bg-jet text-whiteSmoke py-12">
+  return <footer className="bg-jet text-whiteSmoke py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-1 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <img 
-                src="/lovable-uploads/be3d7f62-cd6d-467d-a3ef-6c03061959fa.png" 
-                alt="Zenith Academy" 
-                className="h-12 object-contain"
-              />
+              <img src="/lovable-uploads/be3d7f62-cd6d-467d-a3ef-6c03061959fa.png" alt="Zenith Academy" className="h-12 object-contain" />
             </Link>
             <p className="text-sm text-gray-400 mt-4">
               ՏՈՒԿ-ՖԱԱՌԱԼՊ © {currentYear}
@@ -88,31 +81,13 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">{t('footer.follow')}</h3>
             <div className="flex space-x-4">
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors"
-                aria-label="Facebook"
-              >
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors"
-                aria-label="Instagram"
-              >
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors"
-                aria-label="LinkedIn"
-              >
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="bg-gray-700 hover:bg-rustyRed p-2 rounded-full transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -120,23 +95,15 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm text-gray-400 mb-4 md:mb-0">
-            Zenith Academy by FAARALP
-          </p>
+          <p className="text-sm text-gray-400 mb-4 md:mb-0">Zenith Academy by @tezzarida</p>
           <div className="flex items-center space-x-4">
             <span className="text-sm text-gray-400">{t('footer.language')}:</span>
-            <Link 
-              to="#" 
-              className="text-sm hover:text-selectiveYellow"
-              onClick={handleLanguageClick}
-            >
+            <Link to="#" className="text-sm hover:text-selectiveYellow" onClick={handleLanguageClick}>
               {t('lang.armenian')} | {t('lang.french')} | {t('lang.english')}
             </Link>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
