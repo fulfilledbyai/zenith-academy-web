@@ -68,8 +68,7 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-2">{t('contact.email')}</h3>
               <p className="text-gray-600">
-                info@zenithacademy.am<br />
-                support@zenithacademy.am
+                info@zenithacademy.am
               </p>
             </div>
           </div>
