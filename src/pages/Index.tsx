@@ -212,7 +212,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img src="/lovable-uploads/fc5a2653-029c-4cbc-acf8-e5439cca53e6.png" alt={t('team.varadzak')} className="w-full h-full object-cover" />
+                <img alt={t('team.varadzak')} className="w-full h-full object-cover" src="/lovable-uploads/d537dbe2-c852-435b-9dc1-e92241ee247f.jpg" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.varadzak')}</h3>
               <p className="text-gray-600">{t('team.varadzakRole')}</p>
