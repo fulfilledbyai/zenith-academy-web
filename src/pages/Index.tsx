@@ -153,7 +153,7 @@ const Index = () => {
           </div>
           
           <div className="mt-16">
-            <img src="/lovable-uploads/c159a039-2cc2-4d5e-bae1-a11a4b9f530e.png" alt="Zenith Academy Workshop" className="w-full h-auto rounded-lg shadow-lg" />
+            <img src="/lovable-uploads/b94b10db-dc31-40ec-be5e-30ae6ffe399a.png" alt="Zenith Academy Workshop" className="w-full h-auto rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
