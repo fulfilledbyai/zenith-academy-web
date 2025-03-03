@@ -39,7 +39,7 @@ const About = () => {
                 </p>
                 <Button asChild className="mt-4 bg-rustyRed hover:bg-rustyRed/90 text-white">
                   <Link to="/about">
-                    Back to About
+                    {t('about.backButton')}
                   </Link>
                 </Button>
               </div>
@@ -58,7 +58,7 @@ const About = () => {
             <div className="max-w-3xl">
               <h1 className="text-4xl font-bold mb-6">{t('about.sevan')}</h1>
               <p className="text-xl">
-                Learn about our educational center in Sevan, Armenia.
+                {t('about.sevan.description')}
               </p>
             </div>
           </div>
@@ -71,7 +71,7 @@ const About = () => {
             </p>
             <Button asChild className="mt-4 bg-rustyRed hover:bg-rustyRed/90 text-white">
               <Link to="/about">
-                Back to About
+                {t('about.backButton')}
               </Link>
             </Button>
           </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
@@ -47,7 +46,7 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-2">{t('contact.visit')}</h3>
               <p className="text-gray-600">
                 Yerevan, Armenia<br />
-                Main Campus Building
+                {t('contact.mainCampus')}
               </p>
             </div>
             

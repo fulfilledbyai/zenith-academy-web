@@ -428,6 +428,21 @@ const translations = {
     fr: 'Découvrez l\'Académie Zénith, notre mission, notre vision et les valeurs qui guident notre approche éducative.',
     en: 'Learn about Zenith Academy, our mission, vision, and the values that drive our educational approach.'
   },
+  'about.sevan.description': {
+    am: 'Ծանոթացեք մեր կրթական կենտրոնին Սևանում, Հայաստան։',
+    fr: 'Découvrez notre centre éducatif à Sevan, Arménie.',
+    en: 'Learn about our educational center in Sevan, Armenia.'
+  },
+  'about.backButton': {
+    am: 'Վերադառնալ',
+    fr: 'Retour',
+    en: 'Back to About'
+  },
+  'contact.mainCampus': {
+    am: 'Գլխավոր համալսարանական շենք',
+    fr: 'Bâtiment principal du campus',
+    en: 'Main Campus Building'
+  },
 
   // Courses page translations
   'courses.header.title': {
