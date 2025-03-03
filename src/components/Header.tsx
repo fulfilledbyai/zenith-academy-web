@@ -73,7 +73,7 @@ const Header: React.FC = () => {
         <Link to="/" className="logo-container group relative z-20">
           <div className="flex items-center gap-2">
             <div className="relative w-10 h-10 md:w-12 md:h-12">
-              <img src="/lovable-uploads/4ffe75bd-c26d-4335-a7fd-5714846d2b91.png" alt="Zenith Logo Symbol" className="w-full h-full object-contain logo-animation" />
+              <img alt="Zenith Logo Symbol" className="w-full h-full object-contain logo-animation" src="/lovable-uploads/346f2a85-5d0e-42fa-969f-b79aea7066d5.png" />
             </div>
             <div className="hidden md:block">
               
