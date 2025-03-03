@@ -115,7 +115,7 @@ const Index = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-lg overflow-hidden shadow-lg">
-              <img src="/lovable-uploads/b7e4d552-e044-4801-b8b5-39943b295f3e.png" alt="Zenith Academy Workshop" className="w-full h-auto" />
+              <img src="/lovable-uploads/22ba7e57-e9d6-4882-8081-3eb0c0976729.png" alt="Zenith Academy Workshop" className="w-full h-auto" />
             </div>
             
             <div>
