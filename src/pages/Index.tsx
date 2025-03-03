@@ -42,6 +42,17 @@ const Index = () => {
     }
   ];
 
+  const results = [
+    { number: '3', text: t('results.trainingAreas') },
+    { number: '1101', text: t('results.sessions') },
+    { number: '44', text: t('results.trainingWeeks') },
+    { number: '120', text: t('results.participantStudents') },
+    { number: '43', text: t('results.participantTeachers') },
+    { number: '46', text: t('results.participantSpecialists') },
+    { number: '10+', text: t('results.participatingCities') },
+    { number: '12', text: t('results.participatingGroups') }
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -85,10 +96,27 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Foundation Info Section */}
+      {/* Mission Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-rustyRed">{t('mission.title')}</h2>
+            <div className="h-1 w-20 bg-rustyRed mx-auto mb-8"></div>
+            <h3 className="text-2xl font-bold mb-6">{t('mission.subtitle')}</h3>
+            <p className="text-lg text-gray-700">
+              {t('mission.description')}
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/b7e4d552-e044-4801-b8b5-39943b295f3e.png" 
+                alt="Zenith Academy Workshop" 
+                className="w-full h-auto"
+              />
+            </div>
+            
             <div>
               <h2 className="text-3xl font-bold mb-6">{t('hero.title')}</h2>
               <div className="h-1 w-20 bg-rustyRed mb-6"></div>
@@ -96,20 +124,49 @@ const Index = () => {
                 {t('foundation.description')}
               </p>
             </div>
-            
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" 
-                alt="Zenith Academy Team" 
-                className="w-full h-auto"
-              />
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Results Section */}
+      <section className="py-20 bg-whiteSmoke">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-rustyRed">{t('results.title')}</h2>
+            <div className="h-1 w-20 bg-rustyRed mx-auto mb-4"></div>
+            <h3 className="text-2xl font-bold mb-8">{t('results.subtitle')}</h3>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            {results.slice(0, 4).map((result, index) => (
+              <div key={index} className="text-center">
+                <div className="text-6xl font-bold text-jet mb-4">{result.number}</div>
+                <div className="text-gray-600">{result.text}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            {results.slice(4, 8).map((result, index) => (
+              <div key={index} className="text-center">
+                <div className="text-6xl font-bold text-jet mb-4">{result.number}</div>
+                <div className="text-gray-600">{result.text}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-16">
+            <img 
+              src="/lovable-uploads/c159a039-2cc2-4d5e-bae1-a11a4b9f530e.png" 
+              alt="Zenith Academy Workshop" 
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-whiteSmoke">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-6">Zenith Academy</h2>
@@ -133,6 +190,104 @@ const Index = () => {
                 <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-whiteSmoke">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-rustyRed">{t('team.title')}</h2>
+            <div className="h-1 w-20 bg-rustyRed mx-auto mb-8"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/6e39d0a8-6984-4ba5-a4cb-63a484eda588.png" 
+                  alt={t('team.hayk')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.hayk')}</h3>
+              <p className="text-gray-600">{t('team.haykRole')}</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/74524433-b237-49e7-8d44-139b4e7178a9.png" 
+                  alt={t('team.hasmik')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.hasmik')}</h3>
+              <p className="text-gray-600">{t('team.hasmikRole')}</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/55be7807-fd28-4ad4-8825-ec3b61d365f1.png" 
+                  alt={t('team.hagop')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.hagop')}</h3>
+              <p className="text-gray-600">{t('team.hagopRole')}</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/fc5a2653-029c-4cbc-acf8-e5439cca53e6.png" 
+                  alt={t('team.varadzak')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.varadzak')}</h3>
+              <p className="text-gray-600">{t('team.varadzakRole')}</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/c7231af9-9c14-4423-a3b5-3f89e15c68c6.png" 
+                  alt={t('team.anna')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.anna')}</h3>
+              <p className="text-gray-600">{t('team.annaRole')}</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/0a98e2dd-6941-4ae7-96ec-1331008291ad.png" 
+                  alt={t('team.mariam')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.mariam')}</h3>
+              <p className="text-gray-600">{t('team.mariamRole')}</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
+                <img 
+                  src="/lovable-uploads/34b17a2e-d126-426e-87aa-ac926cc05d2b.png" 
+                  alt={t('team.ashot')} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-1">{t('team.ashot')}</h3>
+              <p className="text-gray-600">{t('team.ashotRole')}</p>
+            </div>
           </div>
         </div>
       </section>

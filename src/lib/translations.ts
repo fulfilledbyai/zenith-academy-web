@@ -135,6 +135,152 @@ const translations = {
     am: 'Բովանդակությունը շուտով կավելացվի',
     fr: 'Le contenu sera ajouté bientôt',
     en: 'Content will be added soon'
+  },
+  
+  // Mission
+  'mission.title': {
+    am: 'ԱՌԱՔԵԼՈՒԹՅՈՒՆ',
+    fr: 'MISSION',
+    en: 'MISSION'
+  },
+  'mission.subtitle': {
+    am: 'Կրթության նոր հորիզոններ',
+    fr: 'Nouveaux horizons éducatifs',
+    en: 'New Educational Horizons'
+  },
+  'mission.description': {
+    am: 'Մեր առաքելությունն է մանկավարժական նորարար մոտեցումներով նպաստել տեխնոլոգիական մասնագիտական կրթության համակարգի ձեւավորմանը՝ բարձրացնելով Հայաստանի մասնագիտական կրթության որակը և համաշխարհային մակարդակում դրա համապատասխանությունը:',
+    fr: 'Notre mission est de contribuer à la formation du système d\'enseignement professionnel technologique avec des approches pédagogiques innovantes, en améliorant la qualité de l\'enseignement professionnel en Arménie et sa conformité au niveau mondial.',
+    en: 'Our mission is to contribute to the formation of the technological professional education system with innovative pedagogical approaches, improving the quality of professional education in Armenia and its compliance at the global level.'
+  },
+  
+  // Results
+  'results.title': {
+    am: '«ԶԵՆԻԹ» ԱԿԱԴԵՄԻԱՅԻ ԱՐԴՅՈՒՆՔՆԵՐԸ',
+    fr: 'RÉSULTATS DE L\'ACADÉMIE ZÉNITH',
+    en: 'ZENITH ACADEMY RESULTS'
+  },
+  'results.subtitle': {
+    am: '2022 թվականից ի վեր',
+    fr: 'Depuis 2022',
+    en: 'Since 2022'
+  },
+  'results.trainingAreas': {
+    am: 'Վերապատրաստման ոլորտ',
+    fr: 'Domaines de formation',
+    en: 'Training Areas'
+  },
+  'results.sessions': {
+    am: 'Դասաժամ',
+    fr: 'Sessions',
+    en: 'Sessions'
+  },
+  'results.trainingWeeks': {
+    am: 'Վերապատրաստման շաբաթ',
+    fr: 'Semaines de formation',
+    en: 'Training Weeks'
+  },
+  'results.participantStudents': {
+    am: 'Մասնակից ուսանող',
+    fr: 'Étudiants participants',
+    en: 'Participant Students'
+  },
+  'results.participantTeachers': {
+    am: 'Մասնակից դասախոս',
+    fr: 'Enseignants participants',
+    en: 'Participant Teachers'
+  },
+  'results.participantSpecialists': {
+    am: 'Մասնակից մեծահասակ',
+    fr: 'Spécialistes participants',
+    en: 'Participant Specialists'
+  },
+  'results.participatingCities': {
+    am: 'Մասնակից քաղաք',
+    fr: 'Villes participantes',
+    en: 'Participating Cities'
+  },
+  'results.participatingGroups': {
+    am: 'Մասնակից վերապատրաստման յուրաքանչյուր խմբում',
+    fr: 'Dans chaque groupe de formation participant',
+    en: 'In each participating training group'
+  },
+  
+  // Team
+  'team.title': {
+    am: 'ՄԵՐ ԹԻՄԸ',
+    fr: 'NOTRE ÉQUIPE',
+    en: 'OUR TEAM'
+  },
+  'team.hayk': {
+    am: 'Հայկ Զոքանյան',
+    fr: 'Hayk Zokanyan',
+    en: 'Hayk Zokanyan'
+  },
+  'team.haykRole': {
+    am: 'Հոգաբարձուների խորհրդի նախագահ',
+    fr: 'Président du conseil d\'administration',
+    en: 'Chairman of the Board of Trustees'
+  },
+  'team.hasmik': {
+    am: 'Հասմիկ Սարգսյան',
+    fr: 'Hasmik Sargsyan',
+    en: 'Hasmik Sargsyan'
+  },
+  'team.hasmikRole': {
+    am: 'Գործադիր տնօրեն',
+    fr: 'Directeur exécutif',
+    en: 'Executive Director'
+  },
+  'team.hagop': {
+    am: 'Հակոբ Աժամյան',
+    fr: 'Hagop Ajamian',
+    en: 'Hagop Ajamian'
+  },
+  'team.hagopRole': {
+    am: 'Կրթական տեխնոլոգիաների ղեկավար, փորձագետ',
+    fr: 'Responsable des technologies éducatives, expert',
+    en: 'Head of Educational Technologies, Expert'
+  },
+  'team.varadzak': {
+    am: 'Վարազդատ Օսիպյան',
+    fr: 'Varazdat Osipyan',
+    en: 'Varazdat Osipyan'
+  },
+  'team.varadzakRole': {
+    am: 'Դասավանդող ավագ մասնագետ',
+    fr: 'Spécialiste senior enseignant',
+    en: 'Senior Teaching Specialist'
+  },
+  'team.anna': {
+    am: 'Աննա Նահապետյան',
+    fr: 'Anna Nahapetyan',
+    en: 'Anna Nahapetyan'
+  },
+  'team.annaRole': {
+    am: 'Միջազգային կապերի և դրամահավաքի պատասխանատու',
+    fr: 'Responsable des relations internationales et de la collecte de fonds',
+    en: 'International Relations and Fundraising Specialist'
+  },
+  'team.mariam': {
+    am: 'Մարիամ Գրիգորյան',
+    fr: 'Mariam Grigoryan',
+    en: 'Mariam Grigoryan'
+  },
+  'team.mariamRole': {
+    am: 'Հաղորդակցության մասնագետ',
+    fr: 'Spécialiste en communication',
+    en: 'Communications Specialist'
+  },
+  'team.ashot': {
+    am: 'Աշոտ Առաքելյան',
+    fr: 'Ashot Arakelyan',
+    en: 'Ashot Arakelyan'
+  },
+  'team.ashotRole': {
+    am: 'Ֆինանսական խորհրդատու',
+    fr: 'Conseiller financier',
+    en: 'Financial Advisor'
   }
 };
 
