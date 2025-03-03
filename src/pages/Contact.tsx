@@ -116,7 +116,7 @@ const Contact = () => {
             {/* Map */}
             <div className="relative h-[500px] rounded-lg overflow-hidden">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194725.59666369032!2d44.359036268845694!3d40.15319331982346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2dab8fc8b5b%3A0x3d1479ae87da526a!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2sus!4v1654321234567!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6098.773986340366!2d44.5095245!3d40.1559366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abc6d01f98ebb%3A0x49a6cbe100ad073e!2s80%20Tigran%20Mets%20Ave%2C%20Yerevan%2C%20Armenia!5e0!3m2!1sen!2ses!4v1741033363132!5m2!1sen!2ses" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
