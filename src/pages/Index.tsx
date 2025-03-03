@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
@@ -6,64 +5,65 @@ import { ChevronRight, Lightbulb, Users, Globe, GraduationCap } from 'lucide-rea
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
 const Index = () => {
-  const { t } = useLanguage();
+  const {
+    t
+  } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
-
     return () => clearTimeout(timer);
   }, []);
-
-  const features = [
-    {
-      icon: <Lightbulb className="w-8 h-8 text-selectiveYellow" />,
-      title: 'Innovation',
-      description: 'Cutting-edge technological education and innovative teaching methods'
-    },
-    {
-      icon: <Users className="w-8 h-8 text-selectiveYellow" />,
-      title: 'Collaboration',
-      description: 'French-Armenian collaboration bringing international expertise'
-    },
-    {
-      icon: <Globe className="w-8 h-8 text-selectiveYellow" />,
-      title: 'Decentralization',
-      description: 'Promoting decentralized development of education across Armenia'
-    },
-    {
-      icon: <GraduationCap className="w-8 h-8 text-selectiveYellow" />,
-      title: 'Excellence',
-      description: 'Education aligned with the best international standards'
-    }
-  ];
-
-  const results = [
-    { number: '3', text: t('results.trainingAreas') },
-    { number: '1101', text: t('results.sessions') },
-    { number: '44', text: t('results.trainingWeeks') },
-    { number: '120', text: t('results.participantStudents') },
-    { number: '43', text: t('results.participantTeachers') },
-    { number: '46', text: t('results.participantSpecialists') },
-    { number: '10+', text: t('results.participatingCities') },
-    { number: '12', text: t('results.participatingGroups') }
-  ];
-
-  return (
-    <Layout>
+  const features = [{
+    icon: <Lightbulb className="w-8 h-8 text-selectiveYellow" />,
+    title: 'Innovation',
+    description: 'Cutting-edge technological education and innovative teaching methods'
+  }, {
+    icon: <Users className="w-8 h-8 text-selectiveYellow" />,
+    title: 'Collaboration',
+    description: 'French-Armenian collaboration bringing international expertise'
+  }, {
+    icon: <Globe className="w-8 h-8 text-selectiveYellow" />,
+    title: 'Decentralization',
+    description: 'Promoting decentralized development of education across Armenia'
+  }, {
+    icon: <GraduationCap className="w-8 h-8 text-selectiveYellow" />,
+    title: 'Excellence',
+    description: 'Education aligned with the best international standards'
+  }];
+  const results = [{
+    number: '3',
+    text: t('results.trainingAreas')
+  }, {
+    number: '1101',
+    text: t('results.sessions')
+  }, {
+    number: '44',
+    text: t('results.trainingWeeks')
+  }, {
+    number: '120',
+    text: t('results.participantStudents')
+  }, {
+    number: '43',
+    text: t('results.participantTeachers')
+  }, {
+    number: '46',
+    text: t('results.participantSpecialists')
+  }, {
+    number: '10+',
+    text: t('results.participatingCities')
+  }, {
+    number: '12',
+    text: t('results.participatingGroups')
+  }];
+  return <Layout>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-jet/80 to-jet/60 z-10" />
-          <img 
-            src="/lovable-uploads/0217fc63-2f37-4a2e-9ff1-4a2e23908b96.png" 
-            alt="Zenith Background" 
-            className="w-full h-full object-cover"
-          />
+          <img src="/lovable-uploads/0217fc63-2f37-4a2e-9ff1-4a2e23908b96.png" alt="Zenith Background" className="w-full h-full object-cover" />
         </div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-20">
@@ -110,11 +110,7 @@ const Index = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-lg overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/b7e4d552-e044-4801-b8b5-39943b295f3e.png" 
-                alt="Zenith Academy Workshop" 
-                className="w-full h-auto"
-              />
+              <img src="/lovable-uploads/b7e4d552-e044-4801-b8b5-39943b295f3e.png" alt="Zenith Academy Workshop" className="w-full h-auto" />
             </div>
             
             <div>
@@ -138,29 +134,21 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            {results.slice(0, 4).map((result, index) => (
-              <div key={index} className="text-center">
+            {results.slice(0, 4).map((result, index) => <div key={index} className="text-center">
                 <div className="text-6xl font-bold text-jet mb-4">{result.number}</div>
                 <div className="text-gray-600">{result.text}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            {results.slice(4, 8).map((result, index) => (
-              <div key={index} className="text-center">
+            {results.slice(4, 8).map((result, index) => <div key={index} className="text-center">
                 <div className="text-6xl font-bold text-jet mb-4">{result.number}</div>
                 <div className="text-gray-600">{result.text}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           <div className="mt-16">
-            <img 
-              src="/lovable-uploads/c159a039-2cc2-4d5e-bae1-a11a4b9f530e.png" 
-              alt="Zenith Academy Workshop" 
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
+            <img src="/lovable-uploads/c159a039-2cc2-4d5e-bae1-a11a4b9f530e.png" alt="Zenith Academy Workshop" className="w-full h-auto rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -178,18 +166,13 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow"
-              >
+            {features.map((feature, index) => <div key={index} className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
                 <div className="mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -205,11 +188,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/6e39d0a8-6984-4ba5-a4cb-63a484eda588.png" 
-                  alt={t('team.hayk')} 
-                  className="w-full h-full object-cover"
-                />
+                <img alt={t('team.hayk')} className="w-full h-full object-cover" src="/lovable-uploads/5c72cd4e-edbc-4fe4-97ed-9ecf3dcd038a.jpg" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.hayk')}</h3>
               <p className="text-gray-600">{t('team.haykRole')}</p>
@@ -217,11 +196,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/74524433-b237-49e7-8d44-139b4e7178a9.png" 
-                  alt={t('team.hasmik')} 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/74524433-b237-49e7-8d44-139b4e7178a9.png" alt={t('team.hasmik')} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.hasmik')}</h3>
               <p className="text-gray-600">{t('team.hasmikRole')}</p>
@@ -229,11 +204,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/55be7807-fd28-4ad4-8825-ec3b61d365f1.png" 
-                  alt={t('team.hagop')} 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/55be7807-fd28-4ad4-8825-ec3b61d365f1.png" alt={t('team.hagop')} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.hagop')}</h3>
               <p className="text-gray-600">{t('team.hagopRole')}</p>
@@ -241,11 +212,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/fc5a2653-029c-4cbc-acf8-e5439cca53e6.png" 
-                  alt={t('team.varadzak')} 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/fc5a2653-029c-4cbc-acf8-e5439cca53e6.png" alt={t('team.varadzak')} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.varadzak')}</h3>
               <p className="text-gray-600">{t('team.varadzakRole')}</p>
@@ -255,11 +222,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/c7231af9-9c14-4423-a3b5-3f89e15c68c6.png" 
-                  alt={t('team.anna')} 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/c7231af9-9c14-4423-a3b5-3f89e15c68c6.png" alt={t('team.anna')} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.anna')}</h3>
               <p className="text-gray-600">{t('team.annaRole')}</p>
@@ -267,11 +230,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/0a98e2dd-6941-4ae7-96ec-1331008291ad.png" 
-                  alt={t('team.mariam')} 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/0a98e2dd-6941-4ae7-96ec-1331008291ad.png" alt={t('team.mariam')} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.mariam')}</h3>
               <p className="text-gray-600">{t('team.mariamRole')}</p>
@@ -279,11 +238,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img 
-                  src="/lovable-uploads/34b17a2e-d126-426e-87aa-ac926cc05d2b.png" 
-                  alt={t('team.ashot')} 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/34b17a2e-d126-426e-87aa-ac926cc05d2b.png" alt={t('team.ashot')} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.ashot')}</h3>
               <p className="text-gray-600">{t('team.ashotRole')}</p>
@@ -309,8 +264,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Index;
