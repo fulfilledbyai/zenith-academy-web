@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const {
+    t
+  } = useLanguage();
   const currentYear = new Date().getFullYear();
-
   const handleLanguageClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const menuElement = document.querySelector('header [role="menu"]');
@@ -15,14 +14,13 @@ const Footer: React.FC = () => {
       menuElement.click();
     }
   };
-
   return <footer className="bg-jet text-whiteSmoke py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-1 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <img alt="Zenith Academy" src="/lovable-uploads/475d22a5-af87-4d95-af83-8c0443421565.png" className="h-20 object-contain" />
+              <img alt="Zenith Academy" className="h-20 object-contain" src="/lovable-uploads/bd7f3b74-3547-4879-a6e7-d631834d0601.png" />
             </Link>
             <p className="text-sm text-gray-400 mt-4">
               ՏՈՒԿ-ՖԱԱՌԱԼՊ © {currentYear}
@@ -113,5 +111,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
