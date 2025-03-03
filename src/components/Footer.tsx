@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-1 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <img alt="Zenith Academy" src="/lovable-uploads/24276dbe-fd83-4c3d-9c32-2b8505b0912f.jpg" className="h-16 object-fill" />
+              <img alt="Zenith Academy" src="/lovable-uploads/475d22a5-af87-4d95-af83-8c0443421565.png" className="h-20 object-contain" />
             </Link>
             <p className="text-sm text-gray-400 mt-4">
               ՏՈՒԿ-ՖԱԱՌԱԼՊ © {currentYear}
