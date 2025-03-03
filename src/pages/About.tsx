@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,81 @@ import { ChevronRight } from 'lucide-react';
 
 const About = () => {
   const { t } = useLanguage();
+  const { section } = useParams();
+
+  if (section === 'foundation') {
+    return (
+      <Layout>
+        <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl font-bold mb-6">{t('about.foundation')}</h1>
+              <p className="text-xl">
+                Learn about the TOUK-FAARALP Educational Foundation and its mission.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img 
+                  src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" 
+                  alt="Foundation Team" 
+                  className="w-full h-auto"
+                />
+              </div>
+              
+              <div>
+                <h2 className="text-3xl font-bold mb-6">ՏՈՒԿ-ՖԱԱՌԱԼՊ</h2>
+                <div className="h-1 w-20 bg-rustyRed mb-6"></div>
+                <p className="text-lg text-gray-700 mb-6">
+                  {t('foundation.description')}
+                </p>
+                <Button asChild className="mt-4 bg-rustyRed hover:bg-rustyRed/90 text-white">
+                  <Link to="/about">
+                    Back to About
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
+  if (section === 'sevan-center') {
+    return (
+      <Layout>
+        <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl font-bold mb-6">{t('about.sevan')}</h1>
+              <p className="text-xl">
+                Learn about our educational center in Sevan, Armenia.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <p className="text-lg text-gray-600 mb-8">
+              {t('placeholder.content')}
+            </p>
+            <Button asChild className="mt-4 bg-rustyRed hover:bg-rustyRed/90 text-white">
+              <Link to="/about">
+                Back to About
+              </Link>
+            </Button>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -31,17 +106,10 @@ const About = () => {
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <div className="h-1 w-20 bg-rustyRed mb-6"></div>
               <p className="text-lg text-gray-700 mb-6">
-                Founded in 2022, Zenith Academy is the result of a collaborative effort between 
-                Armenian and French educational experts under the "TOUK-FAARALP" Educational Foundation.
+                {t('hero.description')}
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                Our mission is to promote the decentralized development of technological education 
-                in Armenia, ensuring it meets the highest international standards.
-              </p>
-              <p className="text-lg text-gray-700 mb-8">
-                Through innovative teaching methodologies and a focus on practical skills, 
-                we aim to prepare students for the challenges and opportunities of the modern 
-                technological landscape.
+                {t('foundation.description')}
               </p>
               
               <div className="flex flex-wrap gap-4">
@@ -138,12 +206,26 @@ const About = () => {
         </div>
       </section>
 
-      {/* Content will be added later */}
+      {/* Team Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <p className="text-lg text-gray-600 mb-8">
-            {t('placeholder.content')}
-          </p>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold mb-6">Our Team</h2>
+            <div className="h-1 w-20 bg-rustyRed mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600">
+              Meet the dedicated professionals behind Zenith Academy.
+            </p>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="rounded-lg overflow-hidden shadow-lg max-w-3xl">
+              <img 
+                src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" 
+                alt="Zenith Academy Team" 
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </Layout>

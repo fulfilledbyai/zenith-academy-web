@@ -85,6 +85,29 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Foundation Info Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">{t('hero.title')}</h2>
+              <div className="h-1 w-20 bg-rustyRed mb-6"></div>
+              <p className="text-lg text-gray-700 mb-6">
+                {t('foundation.description')}
+              </p>
+            </div>
+            
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" 
+                alt="Zenith Academy Team" 
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-20 bg-whiteSmoke">
         <div className="container mx-auto px-4 md:px-6">

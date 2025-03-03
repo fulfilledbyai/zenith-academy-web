@@ -4,8 +4,11 @@ import { Navigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NewsForm } from '@/components/admin/NewsForm';
+import { CourseForm } from '@/components/admin/CourseForm';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Admin = () => {
+  const { t } = useLanguage();
   // Simple authentication state - would be replaced with a proper auth system in production
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('adminAuth') === 'true');
   const [password, setPassword] = useState('');
@@ -78,10 +81,13 @@ const Admin = () => {
         <Tabs defaultValue="news" className="w-full">
           <TabsList className="mb-6">
             <TabsTrigger value="news">News Management</TabsTrigger>
-            {/* Additional tabs can be added here as the admin panel expands */}
+            <TabsTrigger value="courses">Course Management</TabsTrigger>
           </TabsList>
           <TabsContent value="news" className="space-y-6">
             <NewsForm />
+          </TabsContent>
+          <TabsContent value="courses" className="space-y-6">
+            <CourseForm />
           </TabsContent>
         </Tabs>
       </div>

@@ -66,7 +66,7 @@ const translations = {
     en: 'Zenith Academy'
   },
   'hero.subtitle': {
-    am: 'Տեխնոլոգիական կրթության ապագան',
+    am: 'ՆՈՐԱՐԱՐԱԿԱՆ ԿՐԹՈՒԹՅՈՒՆ՝ ԼՈՒՍԱՎՈՐ ԱՊԱԳԱՅԻ ՀԱՄԱՐ',
     fr: 'L\'avenir de l\'éducation technologique',
     en: 'The Future of Technology Education'
   },
@@ -74,6 +74,11 @@ const translations = {
     am: '2022թ.-ին հիմնված «ՏՈՒԿ-ՖԱԱՌԱԼՊ» կրթական հիմնադրամի «Զենիթ» ակադեմիան հայ-ֆրանսիական համագործակցության արդյունք է, որի առաքելությունն է խթանել Հայաստանում տեխնոլոգիական կրթության ապակենտրոնացված զարգացումը՝ համապատասխան միջազգային լավագույն չափանիշներին:',
     fr: 'Fondée en 2022, l\'Académie Zénith de la Fondation éducative "TOUK-FAARALP" est le fruit d\'une coopération franco-arménienne, dont la mission est de promouvoir le développement décentralisé de l\'éducation technologique en Arménie, conformément aux meilleures normes internationales.',
     en: 'Founded in 2022, the Zenith Academy of the "TOUK-FAARALP" Educational Foundation is the result of French-Armenian cooperation, whose mission is to promote the decentralized development of technological education in Armenia, in accordance with the best international standards.'
+  },
+  'foundation.description': {
+    am: 'Ակադեմիան հիմնադրվել է Օվերն-Ռոն-Ալպեր հայկական ֆեդերացիայի կողմից, որի մասն են կազմում Ֆրանսիայի 13 հայկական ասոցիացիաներ և որի առաքելությունն է զարգացնել Օվերն-Ռոն-Ալպեր շրջանի և Հայաստանի միջև սոցիալական, տնտեսական ու մշակութային փոխանակումները, պաշտպանել շրջանի հայկական համայնքի շահերը և ամրապնդել անդամ ասոցիացիաների դերը հայկական մշակույթի տարածման գործում։',
+    fr: 'L\'Académie a été fondée par la Fédération arménienne d\'Auvergne-Rhône-Alpes, qui comprend 13 associations arméniennes en France et dont la mission est de développer les échanges sociaux, économiques et culturels entre la région Auvergne-Rhône-Alpes et l\'Arménie, de défendre les intérêts de la communauté arménienne de la région et de renforcer le rôle des associations membres dans la diffusion de la culture arménienne.',
+    en: 'The Academy was founded by the Armenian Federation of Auvergne-Rhône-Alpes, which includes 13 Armenian associations in France and whose mission is to develop social, economic and cultural exchanges between the Auvergne-Rhône-Alpes region and Armenia, to defend the interests of the Armenian community in the region and to strengthen the role of member associations in the dissemination of Armenian culture.'
   },
   'cta.learn': {
     am: 'Իմանալ ավելին',
