@@ -177,7 +177,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-rustyRed to-[#e6453d] text-white">
+      <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] text-white py-[30px]">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">{t('features.cta.title')}</h2>
