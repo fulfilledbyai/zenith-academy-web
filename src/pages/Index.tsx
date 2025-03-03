@@ -222,7 +222,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img src="/lovable-uploads/c7231af9-9c14-4423-a3b5-3f89e15c68c6.png" alt={t('team.anna')} className="w-full h-full object-cover" />
+                <img alt={t('team.anna')} className="w-full h-full object-cover" src="/lovable-uploads/f6d70ce0-f3d1-4815-b61c-a2adde97cd74.jpg" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.anna')}</h3>
               <p className="text-gray-600">{t('team.annaRole')}</p>
