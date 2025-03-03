@@ -4,6 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+
 const About = () => {
   const {
     t
@@ -11,6 +12,7 @@ const About = () => {
   const {
     section
   } = useParams();
+
   if (section === 'foundation') {
     return <Layout>
         <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
@@ -75,6 +77,33 @@ const About = () => {
         </section>
       </Layout>;
   }
+  if (section === 'faaralp') {
+    return <Layout>
+        <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl font-bold mb-6">FAARALP</h1>
+              <p className="text-xl">
+                Learn about FAARALP and its mission.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <p className="text-lg text-gray-600 mb-8">
+              {t('placeholder.content')}
+            </p>
+            <Button asChild className="mt-4 bg-rustyRed hover:bg-rustyRed/90 text-white">
+              <Link to="/about">
+                Back to About
+              </Link>
+            </Button>
+          </div>
+        </section>
+      </Layout>;
+  }
   return <Layout>
       {/* Header */}
       <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
@@ -105,13 +134,18 @@ const About = () => {
               <div className="flex flex-wrap gap-4">
                 <Button asChild className="bg-rustyRed hover:bg-rustyRed/90 text-white">
                   <Link to="/about/foundation">
-                    {t('about.foundation')}
+                    SFT FAARALP
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">
                   <Link to="/about/sevan-center">
                     {t('about.sevan')}
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="border-rustyRed text-rustyRed hover:bg-rustyRed/10">
+                  <Link to="/about/faaralp">
+                    FAARALP
                   </Link>
                 </Button>
               </div>
