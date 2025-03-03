@@ -5,6 +5,7 @@ import { ChevronRight, Lightbulb, Users, Globe, GraduationCap } from 'lucide-rea
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+
 const Index = () => {
   const {
     t
@@ -16,6 +17,7 @@ const Index = () => {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
   const features = [{
     icon: <Lightbulb className="w-8 h-8 text-selectiveYellow" />,
     title: 'Innovation',
@@ -33,6 +35,7 @@ const Index = () => {
     title: 'Excellence',
     description: 'Education aligned with the best international standards'
   }];
+
   const results = [{
     number: '3',
     text: t('results.trainingAreas')
@@ -58,6 +61,7 @@ const Index = () => {
     number: '12',
     text: t('results.participatingGroups')
   }];
+
   return <Layout>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
@@ -196,7 +200,7 @@ const Index = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img alt={t('team.hasmik')} src="/lovable-uploads/8c22979c-31db-48b2-82d2-368083d08ad6.jpg" className="w-full h-full object-cover" />
+                <img alt={t('team.hasmik')} src="/lovable-uploads/8c22979c-31db-48b2-82d2-368083d08ad6.jpg" className="w-full h-full object-cover object-top transform translate-y-[-15%]" />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.hasmik')}</h3>
               <p className="text-gray-600">{t('team.hasmikRole')}</p>
@@ -266,4 +270,5 @@ const Index = () => {
       </section>
     </Layout>;
 };
+
 export default Index;

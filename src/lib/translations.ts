@@ -213,9 +213,9 @@ const translations = {
     en: 'OUR TEAM'
   },
   'team.hayk': {
-    am: 'Հայկ Զոքանյան',
-    fr: 'Hayk Zokanyan',
-    en: 'Hayk Zokanyan'
+    am: 'Հայկ Չոբանյան',
+    fr: 'Hayk Chobanyan',
+    en: 'Hayk Chobanyan'
   },
   'team.haykRole': {
     am: 'Հոգաբարձուների խորհրդի նախագահ',
@@ -233,7 +233,7 @@ const translations = {
     en: 'Executive Director'
   },
   'team.hagop': {
-    am: 'Հակոբ Աժամյան',
+    am: 'Հագոպ Աժամյան',
     fr: 'Hagop Ajamian',
     en: 'Hagop Ajamian'
   },
@@ -243,9 +243,9 @@ const translations = {
     en: 'Head of Educational Technologies, Expert'
   },
   'team.varadzak': {
-    am: 'Վարազդատ Օսիպյան',
-    fr: 'Varazdat Osipyan',
-    en: 'Varazdat Osipyan'
+    am: 'Վաղարշակ Օսիպյան',
+    fr: 'Vagharchak Osipyan',
+    en: 'Vagharchak Osipyan'
   },
   'team.varadzakRole': {
     am: 'Դասավանդող ավագ մասնագետ',
