@@ -207,7 +207,7 @@ const About = () => {
             
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 border-4 border-white shadow-md">
-                <img alt={t('team.hasmik')} src="/lovable-uploads/8c22979c-31db-48b2-82d2-368083d08ad6.jpg" className="w-full h-full object-cover object-top transform translate-y-[-10%]" />
+                <img alt={t('team.hasmik')} src="/lovable-uploads/8c22979c-31db-48b2-82d2-368083d08ad6.jpg" className="w-full h-full object-cover object-top transform " />
               </div>
               <h3 className="text-xl font-bold mb-1">{t('team.hasmik')}</h3>
               <p className="text-gray-600">{t('team.hasmikRole')}</p>
