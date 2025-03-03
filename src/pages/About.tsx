@@ -88,7 +88,7 @@ const About = () => {
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold mb-6">{t('nav.about')}</h1>
             <p className="text-xl">
-              Learn about Zenith Academy, our mission, vision, and the values that drive our educational approach.
+              {t('about.header.description')}
             </p>
           </div>
         </div>

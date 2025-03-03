@@ -1,4 +1,3 @@
-
 const translations = {
   // Navigation
   'nav.home': {
@@ -423,6 +422,11 @@ const translations = {
     am: 'Ակադեմիան հիմնադրվել է Օվերն-Ռոն-Ալպեր հայկական ֆեդերացիայի կողմից, որի մասն են կազմում Ֆրանսիայի 13 հայկական ասոցիացիաներ և որի առաքելությունն է զարգացնել Օվերն-Ռոն-Ալպեր շրջանի և Հայաստանի միջև սոցիալական, տնտեսական ու մշակութային փոխանակումները:',
     fr: 'L\'Académie a été fondée par la Fédération arménienne d\'Auvergne-Rhône-Alpes, qui comprend 13 associations arméniennes en France et dont la mission est de développer les échanges sociaux, économiques et culturels entre la région Auvergne-Rhône-Alpes et l\'Arménie.',
     en: 'The Academy was founded by the Armenian Federation of Auvergne-Rhône-Alpes, which includes 13 Armenian associations in France and whose mission is to develop social, economic and cultural exchanges between the Auvergne-Rhône-Alpes region and Armenia.'
+  },
+  'about.header.description': {
+    am: 'Իմացեք «Զենիթ» ակադեմիայի, մեր առաքելության, տեսլականի և այն արժեքների մասին, որոնք ուղղորդում են մեր կրթական մոտեցումը։',
+    fr: 'Découvrez l\'Académie Zénith, notre mission, notre vision et les valeurs qui guident notre approche éducative.',
+    en: 'Learn about Zenith Academy, our mission, vision, and the values that drive our educational approach.'
   },
 
   // Courses page translations
