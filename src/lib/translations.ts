@@ -205,6 +205,48 @@ const translations = {
     en: 'In each participating training group'
   },
   
+  // Values Section
+  'values.title': {
+    am: 'Մեր արժեքները',
+    fr: 'Nos valeurs',
+    en: 'Our Values'
+  },
+  'values.description': {
+    am: 'Հիմնական սկզբունքները, որոնք ուղղորդում են մեր կրթական մոտեցումը և հաստատության զարգացումը:',
+    fr: 'Les principes fondamentaux qui guident notre approche éducative et le développement institutionnel.',
+    en: 'The core principles that guide our educational approach and institutional development.'
+  },
+  'values.innovation.title': {
+    am: 'Նորարարություն',
+    fr: 'Innovation',
+    en: 'Innovation'
+  },
+  'values.innovation.description': {
+    am: 'Նոր տեխնոլոգիաների և դասավանդման մեթոդաբանության ընդունում՝ ժամանակակից կրթություն տրամադրելու համար:',
+    fr: 'Adoption de nouvelles technologies et méthodologies d\'enseignement pour fournir une éducation de pointe.',
+    en: 'Embracing new technologies and teaching methodologies to provide cutting-edge education.'
+  },
+  'values.excellence.title': {
+    am: 'Գերազանցություն',
+    fr: 'Excellence',
+    en: 'Excellence'
+  },
+  'values.excellence.description': {
+    am: 'Հանձնառություն կրթության և հաստատության գործունեության բարձրագույն չափանիշներին:',
+    fr: 'Engagement envers les normes les plus élevées d\'éducation et de performance institutionnelle.',
+    en: 'Committing to the highest standards of education and institutional performance.'
+  },
+  'values.collaboration.title': {
+    am: 'Համագործակցություն',
+    fr: 'Collaboration',
+    en: 'Collaboration'
+  },
+  'values.collaboration.description': {
+    am: 'Աշխատել միասին՝ սահմանների և ոլորտների միջև, կրթական գերազանցությանը հասնելու համար:',
+    fr: 'Travailler ensemble à travers les frontières et les disciplines pour atteindre l\'excellence éducative.',
+    en: 'Working together across borders and disciplines to achieve educational excellence.'
+  },
+  
   // Team
   'team.title': {
     am: 'ՄԵՐ ԹԻՄԸ',

@@ -170,10 +170,10 @@ const About = () => {
       <section className="py-16 bg-whiteSmoke">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-6">Our Values</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('values.title')}</h2>
             <div className="h-1 w-20 bg-rustyRed mx-auto mb-6"></div>
             <p className="text-lg text-gray-600">
-              The core principles that guide our educational approach and institutional development.
+              {t('values.description')}
             </p>
           </div>
           
@@ -186,9 +186,9 @@ const About = () => {
                   <path d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z" fill="currentColor" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Innovation</h3>
+              <h3 className="text-xl font-bold mb-3">{t('values.innovation.title')}</h3>
               <p className="text-gray-600">
-                Embracing new technologies and teaching methodologies to provide cutting-edge education.
+                {t('values.innovation.description')}
               </p>
             </div>
             
@@ -199,9 +199,9 @@ const About = () => {
                   <path d="M12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17Z" fill="white" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Excellence</h3>
+              <h3 className="text-xl font-bold mb-3">{t('values.excellence.title')}</h3>
               <p className="text-gray-600">
-                Committing to the highest standards of education and institutional performance.
+                {t('values.excellence.description')}
               </p>
             </div>
             
@@ -213,9 +213,9 @@ const About = () => {
                   <path d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12Z" fill="currentColor" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Collaboration</h3>
+              <h3 className="text-xl font-bold mb-3">{t('values.collaboration.title')}</h3>
               <p className="text-gray-600">
-                Working together across borders and disciplines to achieve educational excellence.
+                {t('values.collaboration.description')}
               </p>
             </div>
           </div>
