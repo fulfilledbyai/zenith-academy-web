@@ -8,6 +8,14 @@ const Footer: React.FC = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
+  const handleLanguageClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const menuElement = document.querySelector('header [role="menu"]');
+    if (menuElement instanceof HTMLElement) {
+      menuElement.click();
+    }
+  };
+
   return (
     <footer className="bg-jet text-whiteSmoke py-12">
       <div className="container mx-auto px-4 md:px-6">
@@ -120,10 +128,7 @@ const Footer: React.FC = () => {
             <Link 
               to="#" 
               className="text-sm hover:text-selectiveYellow"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('header [role="menu"]')?.click();
-              }}
+              onClick={handleLanguageClick}
             >
               {t('lang.armenian')} | {t('lang.french')} | {t('lang.english')}
             </Link>
