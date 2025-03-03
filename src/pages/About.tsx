@@ -4,14 +4,15 @@ import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
-
 const About = () => {
-  const { t } = useLanguage();
-  const { section } = useParams();
-
+  const {
+    t
+  } = useLanguage();
+  const {
+    section
+  } = useParams();
   if (section === 'foundation') {
-    return (
-      <Layout>
+    return <Layout>
         <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl">
@@ -27,11 +28,7 @@ const About = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" 
-                  alt="Foundation Team" 
-                  className="w-full h-auto"
-                />
+                <img src="/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png" alt="Foundation Team" className="w-full h-auto" />
               </div>
               
               <div>
@@ -49,13 +46,10 @@ const About = () => {
             </div>
           </div>
         </section>
-      </Layout>
-    );
+      </Layout>;
   }
-
   if (section === 'sevan-center') {
-    return (
-      <Layout>
+    return <Layout>
         <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl">
@@ -79,12 +73,9 @@ const About = () => {
             </Button>
           </div>
         </section>
-      </Layout>
-    );
+      </Layout>;
   }
-
-  return (
-    <Layout>
+  return <Layout>
       {/* Header */}
       <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -127,18 +118,10 @@ const About = () => {
             </div>
             
             <div className="relative rounded-lg overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/497177b0-e165-4f19-b583-d86e735ac178.png" 
-                alt="Zenith Academy Team" 
-                className="w-full h-full object-cover"
-              />
+              <img src="/lovable-uploads/497177b0-e165-4f19-b583-d86e735ac178.png" alt="Zenith Academy Team" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                 <div className="p-6">
-                  <img 
-                    src="/lovable-uploads/b6b54d9e-92cb-4c89-9351-2c93dfe4f42a.png" 
-                    alt="Zenith Academy Logo" 
-                    className="h-12 mb-2" 
-                  />
+                  
                   <p className="text-white text-lg">
                     Excellence in Technological Education
                   </p>
@@ -274,8 +257,6 @@ const About = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default About;
