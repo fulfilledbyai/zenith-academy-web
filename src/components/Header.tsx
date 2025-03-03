@@ -4,6 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import LanguageSelector from './LanguageSelector';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 interface NavItem {
   label: string;
   path: string;
@@ -12,6 +13,7 @@ interface NavItem {
     path: string;
   }[];
 }
+
 const Header: React.FC = () => {
   const {
     t
@@ -19,6 +21,7 @@ const Header: React.FC = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const navItems: NavItem[] = [{
     label: t('nav.home'),
     path: '/'
@@ -55,6 +58,7 @@ const Header: React.FC = () => {
     label: t('nav.contact'),
     path: '/contact'
   }];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -63,13 +67,12 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when changing routes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
+
   return <header className={cn('fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300', scrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-2' : 'bg-transparent py-4')}>
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="logo-container group relative z-20">
           <div className="flex items-center gap-2">
             <div className="relative w-10 h-10 md:w-12 md:h-12">
@@ -81,25 +84,29 @@ const Header: React.FC = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-1">
-          {navItems.map(item => <div key={item.path} className="relative group">
+          {navItems.map(item => 
+            <div key={item.path} className="relative group">
               <Link to={item.path} className={cn('nav-item', location.pathname === item.path && 'active')}>
                 {item.label}
                 {item.submenu && <ChevronDown className="inline-block ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />}
               </Link>
               
-              {item.submenu && <div className="dropdown-menu">
+              {item.submenu && 
+                <div className="dropdown-menu absolute top-full left-0 w-64 bg-white rounded-md shadow-lg z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
                   <div className="py-2">
-                    {item.submenu.map(subItem => <Link key={subItem.path} to={subItem.path} className="block px-4 py-2 hover:bg-muted transition-colors">
+                    {item.submenu.map(subItem => 
+                      <Link key={subItem.path} to={subItem.path} className="block px-4 py-2 hover:bg-muted transition-colors">
                         {subItem.label}
-                      </Link>)}
+                      </Link>
+                    )}
                   </div>
-                </div>}
-            </div>)}
+                </div>
+              }
+            </div>
+          )}
         </nav>
 
-        {/* Language Selector and Mobile Menu Button */}
         <div className="flex items-center gap-4">
           <LanguageSelector />
           
@@ -108,7 +115,6 @@ const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         <div className={cn("fixed inset-0 bg-white/95 backdrop-blur-md z-10 lg:hidden transition-transform duration-300 ease-in-out", isMenuOpen ? "translate-x-0" : "translate-x-full")}>
           <div className="container mx-auto px-4 pt-24 pb-8">
             <nav className="flex flex-col space-y-4">
@@ -129,4 +135,5 @@ const Header: React.FC = () => {
       </div>
     </header>;
 };
+
 export default Header;
