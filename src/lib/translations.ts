@@ -1,3 +1,4 @@
+
 const translations = {
   // Navigation
   'nav.home': {
@@ -315,12 +316,12 @@ const translations = {
   },
   'team.ashot': {
     am: 'Աշոտ Առաքելյան',
-    fr: 'Conseiller financier',
-    en: 'Financial Advisor'
+    fr: 'Ashot Arakelyan',
+    en: 'Ashot Arakelyan'
   },
   'team.ashotRole': {
     am: 'Ֆինանսական խորհրդատու',
-    fr: 'Ashot Arakelyan',
+    fr: 'Conseiller financier',
     en: 'Financial Advisor'
   },
   
@@ -405,6 +406,152 @@ const translations = {
     am: 'Ուսումնասիրեք մեր դասընթացները և կատարեք առաջին քայլը դեպի ավելի պայծառ ապագա «Զենիթ» ակադեմիայի հետ:',
     fr: 'Explorez nos cours et faites le premier pas vers un avenir plus brillant avec l\'Académie Zénith.',
     en: 'Explore our courses and take the first step towards a brighter future with Zenith Academy.'
+  },
+  
+  // About Page - New content
+  'about.story.title': {
+    am: 'Մեր պատմությունը',
+    fr: 'Notre histoire',
+    en: 'Our Story'
+  },
+  'about.story.description1': {
+    am: '2022թ.-ին հիմնված «ՏՈՒԿ-ՖԱԱՌԱԼՊ» կրթական հիմնադրամի «Զենիթ» ակադեմիան հայ-ֆրանսիական համագործակցության արդյունք է, որի առաքելությունն է խթանել Հայաստանում տեխնոլոգիական կրթության ապակենտրոնացված զարգացումը՝ համապատասխան միջազգային լավագույն չափանիշներին:',
+    fr: 'Fondée en 2022, l\'Académie Zénith de la Fondation éducative "TOUK-FAARALP" est le fruit d\'une coopération franco-arménienne, dont la mission est de promouvoir le développement décentralisé de l\'éducation technologique en Arménie, conformément aux meilleures normes internationales.',
+    en: 'Founded in 2022, the Zenith Academy of the "TOUK-FAARALP" Educational Foundation is the result of French-Armenian cooperation, whose mission is to promote the decentralized development of technological education in Armenia, in accordance with the best international standards.'
+  },
+  'about.story.description2': {
+    am: 'Ակադեմիան հիմնադրվել է Օվերն-Ռոն-Ալպեր հայկական ֆեդերացիայի կողմից, որի մասն են կազմում Ֆրանսիայի 13 հայկական ասոցիացիաներ և որի առաքելությունն է զարգացնել Օվերն-Ռոն-Ալպեր շրջանի և Հայաստանի միջև սոցիալական, տնտեսական ու մշակութային փոխանակումները:',
+    fr: 'L\'Académie a été fondée par la Fédération arménienne d\'Auvergne-Rhône-Alpes, qui comprend 13 associations arméniennes en France et dont la mission est de développer les échanges sociaux, économiques et culturels entre la région Auvergne-Rhône-Alpes et l\'Arménie.',
+    en: 'The Academy was founded by the Armenian Federation of Auvergne-Rhône-Alpes, which includes 13 Armenian associations in France and whose mission is to develop social, economic and cultural exchanges between the Auvergne-Rhône-Alpes region and Armenia.'
+  },
+
+  // Courses page translations
+  'courses.header.title': {
+    am: 'Դասընթացներ',
+    fr: 'Cours',
+    en: 'Courses'
+  },
+  'courses.header.description': {
+    am: 'Բացահայտեք մեր համապարփակ տեխնոլոգիական կրթական ծրագրերը, որոնք նախատեսված են տարբեր սովորողների կարիքները բավարարելու համար:',
+    fr: 'Découvrez notre gamme complète de programmes d\'éducation technologique conçus pour répondre aux besoins de différents apprenants.',
+    en: 'Discover our comprehensive range of technological education programs designed to meet the needs of different learners.'
+  },
+  'courses.viewCourses': {
+    am: 'Դիտել դասընթացները',
+    fr: 'Voir les cours',
+    en: 'View Courses'
+  },
+  'courses.individuals.description': {
+    am: 'Անհատ սովորողների համար հարմարեցված դասընթացներ, որոնք ցանկանում են բարելավել իրենց տեխնոլոգիական հմտությունները:',
+    fr: 'Cours adaptés aux apprenants individuels qui souhaitent améliorer leurs compétences technologiques.',
+    en: 'Courses tailored for individual learners looking to enhance their technological skills.'
+  },
+  'courses.organizations.description': {
+    am: 'Մասնագիտացված ծրագրեր կազմակերպությունների համար՝ իրենց աշխատուժի հմտությունները բարձրացնելու և տեխնոլոգիական կարողությունները բարելավելու համար:',
+    fr: 'Programmes spécialisés pour les organisations afin d\'améliorer les compétences de leur personnel et d\'améliorer leurs capacités technologiques.',
+    en: 'Specialized programs for organizations to upskill their workforce and improve technological capabilities.'
+  },
+  'courses.teachers.description': {
+    am: 'Մասնագիտական զարգացման դասընթացներ տեխնիկական քոլեջների դասախոսների համար՝ դասավանդման մեթոդաբանությունը բարելավելու համար:',
+    fr: 'Cours de développement professionnel pour les enseignants des collèges techniques afin d\'améliorer les méthodologies d\'enseignement.',
+    en: 'Professional development courses for technical college teachers to enhance teaching methodologies.'
+  },
+  'courses.students.description': {
+    am: 'Լրացուցիչ դասընթացներ տեխնիկական քոլեջների ուսանողների համար՝ գործնական հմտություններ և գիտելիքներ ձեռք բերելու համար:',
+    fr: 'Cours complémentaires pour les étudiants des collèges techniques afin d\'acquérir des compétences pratiques et des connaissances.',
+    en: 'Supplementary courses for technical college students to gain practical skills and knowledge.'
+  },
+
+  // Contact page translations
+  'contact.header.title': {
+    am: 'Կապ մեր հետ',
+    fr: 'Contactez-nous',
+    en: 'Contact Us'
+  },
+  'contact.header.description': {
+    am: 'Կապվեք մեզ հետ դասընթացների, համագործակցության կամ ընդհանուր տեղեկատվության մասին հարցերի համար:',
+    fr: 'Contactez-nous pour des questions sur les cours, les partenariats ou des informations générales.',
+    en: 'Get in touch with us for inquiries about courses, partnerships, or general information.'
+  },
+  'contact.visit': {
+    am: 'Այցելեք մեզ',
+    fr: 'Visitez-nous',
+    en: 'Visit Us'
+  },
+  'contact.call': {
+    am: 'Զանգահարեք մեզ',
+    fr: 'Appelez-nous',
+    en: 'Call Us'
+  },
+  'contact.email': {
+    am: 'Էլ․ նամակ ուղարկեք',
+    fr: 'Envoyez-nous un email',
+    en: 'Email Us'
+  },
+  'contact.workingHours': {
+    am: 'Երկուշաբթի - Ուրբաթ, 9:00 - 18:00',
+    fr: 'Lundi - Vendredi, 9h - 18h',
+    en: 'Monday - Friday, 9am - 6pm'
+  },
+  'contact.form.title': {
+    am: 'Ուղարկեք մեզ հաղորդագրություն',
+    fr: 'Envoyez-nous un message',
+    en: 'Send Us a Message'
+  },
+  'contact.form.name': {
+    am: 'Անուն',
+    fr: 'Nom',
+    en: 'Name'
+  },
+  'contact.form.email': {
+    am: 'Էլ․ հասցե',
+    fr: 'Email',
+    en: 'Email'
+  },
+  'contact.form.subject': {
+    am: 'Թեմա',
+    fr: 'Sujet',
+    en: 'Subject'
+  },
+  'contact.form.message': {
+    am: 'Հաղորդագրություն',
+    fr: 'Message',
+    en: 'Message'
+  },
+  'contact.form.send': {
+    am: 'Ուղարկել հաղորդագրություն',
+    fr: 'Envoyer le message',
+    en: 'Send Message'
+  },
+  'contact.form.namePlaceholder': {
+    am: 'Ձեր անունը',
+    fr: 'Votre nom',
+    en: 'Your name'
+  },
+  'contact.form.emailPlaceholder': {
+    am: 'Ձեր էլ․ հասցեն',
+    fr: 'Votre email',
+    en: 'Your email'
+  },
+  'contact.form.subjectPlaceholder': {
+    am: 'Հաղորդագրության թեման',
+    fr: 'Sujet du message',
+    en: 'Message subject'
+  },
+  'contact.form.messagePlaceholder': {
+    am: 'Ձեր հաղորդագրությունը',
+    fr: 'Votre message',
+    en: 'Your message'
+  },
+  'contact.toast.success': {
+    am: 'Հաղորդագրությունն ուղարկված է!',
+    fr: 'Message envoyé !',
+    en: 'Message sent!'
+  },
+  'contact.toast.description': {
+    am: 'Մենք կպատասխանենք Ձեզ հնարավորինս շուտ:',
+    fr: 'Nous vous répondrons dès que possible.',
+    en: 'We\'ll get back to you as soon as possible.'
   }
 };
 

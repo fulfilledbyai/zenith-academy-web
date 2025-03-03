@@ -16,8 +16,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
+      title: t('contact.toast.success'),
+      description: t('contact.toast.description'),
       duration: 5000,
     });
   };
@@ -28,9 +28,9 @@ const Contact = () => {
       <section className="bg-gradient-to-r from-rustyRed to-[#e6453d] py-20 text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold mb-6">{t('nav.contact')}</h1>
+            <h1 className="text-4xl font-bold mb-6">{t('contact.header.title')}</h1>
             <p className="text-xl">
-              Get in touch with us for inquiries about courses, partnerships, or general information.
+              {t('contact.header.description')}
             </p>
           </div>
         </div>
@@ -44,7 +44,7 @@ const Contact = () => {
               <div className="w-16 h-16 bg-rustyRed rounded-full flex items-center justify-center mx-auto mb-6">
                 <MapPin className="text-white h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Visit Us</h3>
+              <h3 className="text-xl font-bold mb-2">{t('contact.visit')}</h3>
               <p className="text-gray-600">
                 Yerevan, Armenia<br />
                 Main Campus Building
@@ -55,10 +55,10 @@ const Contact = () => {
               <div className="w-16 h-16 bg-rustyRed rounded-full flex items-center justify-center mx-auto mb-6">
                 <Phone className="text-white h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Call Us</h3>
+              <h3 className="text-xl font-bold mb-2">{t('contact.call')}</h3>
               <p className="text-gray-600">
                 +374 10 123456<br />
-                Monday - Friday, 9am - 6pm
+                {t('contact.workingHours')}
               </p>
             </div>
             
@@ -66,7 +66,7 @@ const Contact = () => {
               <div className="w-16 h-16 bg-rustyRed rounded-full flex items-center justify-center mx-auto mb-6">
                 <Mail className="text-white h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Email Us</h3>
+              <h3 className="text-xl font-bold mb-2">{t('contact.email')}</h3>
               <p className="text-gray-600">
                 info@zenith.am<br />
                 support@zenith.am
@@ -77,31 +77,31 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-3xl font-bold mb-6">{t('contact.form.title')}</h2>
               <div className="h-1 w-20 bg-rustyRed mb-6"></div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Your name" required />
+                    <Label htmlFor="name">{t('contact.form.name')}</Label>
+                    <Input id="name" placeholder={t('contact.form.namePlaceholder')} required />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Your email" required />
+                    <Label htmlFor="email">{t('contact.form.email')}</Label>
+                    <Input id="email" type="email" placeholder={t('contact.form.emailPlaceholder')} required />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="Message subject" required />
+                  <Label htmlFor="subject">{t('contact.form.subject')}</Label>
+                  <Input id="subject" placeholder={t('contact.form.subjectPlaceholder')} required />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message">{t('contact.form.message')}</Label>
                   <Textarea 
                     id="message" 
-                    placeholder="Your message" 
+                    placeholder={t('contact.form.messagePlaceholder')} 
                     className="min-h-[150px]" 
                     required 
                   />
@@ -109,7 +109,7 @@ const Contact = () => {
                 
                 <Button type="submit" className="bg-rustyRed hover:bg-rustyRed/90 text-white">
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  {t('contact.form.send')}
                 </Button>
               </form>
             </div>
