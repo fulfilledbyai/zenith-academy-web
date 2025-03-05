@@ -31,6 +31,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      console.log("Submitting form data:", formData);
       const { data, error } = await supabase.functions.invoke('contact-form', {
         body: formData
       });
@@ -39,10 +40,19 @@ const Contact = () => {
         throw new Error(error.message || 'An error occurred while submitting the form');
       }
 
-      if (data.warning) {
+      console.log("Contact form response:", data);
+
+      // Show detailed toast based on response
+      if (data.userEmail && !data.userEmail.success) {
         toast({
           title: t('contact.toast.success'),
-          description: data.warning || t('contact.toast.description'),
+          description: "Your form was submitted, but we couldn't send you a confirmation email. We'll still contact you soon.",
+          duration: 5000,
+        });
+      } else if (data.adminEmail && !data.adminEmail.success) {
+        toast({
+          title: t('contact.toast.success'),
+          description: "Your form was submitted and a confirmation was sent to your email. Our team will contact you soon.",
           duration: 5000,
         });
       } else {
@@ -63,7 +73,6 @@ const Contact = () => {
     } catch (error: any) {
       console.error('Error submitting form:', error);
       
-      // Use actual error message instead of translation key for error description
       toast({
         title: t('contact.toast.error'),
         description: error.message || t('contact.toast.errorDescription'),
