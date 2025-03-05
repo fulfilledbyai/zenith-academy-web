@@ -64,7 +64,7 @@ const handler = async (req: Request): Promise<Response> => {
       // Send notification email to admin
       const adminEmailResponse = await resend.emails.send({
         from: "Zenith Academy <onboarding@resend.dev>",
-        to: "info@zenithacademy.am", // Change this to the admin email
+        to: "cft.faaralp@gmail.com", // Changed from info@zenithacademy.am to cft.faaralp@gmail.com
         subject: `New Contact Form: ${subject}`,
         html: `
           <h1>New Contact Form Submission</h1>
