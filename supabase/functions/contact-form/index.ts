@@ -27,10 +27,13 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    console.log("Contact form request received");
     const { name, email, subject, message }: ContactFormData = await req.json();
+    console.log("Form data received:", { name, email, subject, messageLength: message?.length });
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
+      console.error("Missing required fields:", { name, email, subject, messagePresent: !!message });
       return new Response(
         JSON.stringify({ error: "All fields are required" }),
         {
@@ -60,15 +63,20 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Create an array to store email sending promises
-    const emailPromises = [];
-    let emailErrors = [];
+    console.log("Form data saved to database successfully");
+    
+    // Send emails individually with separate try/catch blocks for better error tracking
+    let adminEmailSent = false;
+    let userEmailSent = false;
+    let adminEmailError = null;
+    let userEmailError = null;
 
+    // Send notification email to admin
     try {
-      // Send notification email to admin
-      const adminEmailPromise = resend.emails.send({
+      console.log("Attempting to send admin email to: cft.faaralp@gmail.com");
+      const adminEmailResponse = await resend.emails.send({
         from: "Zenith Academy <onboarding@resend.dev>",
-        to: "cft.faaralp@gmail.com", // Changed from info@zenithacademy.am to cft.faaralp@gmail.com
+        to: "cft.faaralp@gmail.com",
         subject: `New Contact Form: ${subject}`,
         html: `
           <h1>New Contact Form Submission</h1>
@@ -78,10 +86,17 @@ const handler = async (req: Request): Promise<Response> => {
           <p>${message.replace(/\n/g, "<br/>")}</p>
         `,
       });
-      emailPromises.push(adminEmailPromise);
+      console.log("Admin email sent successfully:", adminEmailResponse);
+      adminEmailSent = true;
+    } catch (error) {
+      adminEmailError = error;
+      console.error("Error sending admin email:", error);
+    }
 
-      // Send confirmation email to the user
-      const userEmailPromise = resend.emails.send({
+    // Send confirmation email to the user
+    try {
+      console.log(`Attempting to send confirmation email to user: ${email}`);
+      const userEmailResponse = await resend.emails.send({
         from: "Zenith Academy <onboarding@resend.dev>",
         to: email,
         subject: "Thank you for contacting Zenith Academy",
@@ -93,37 +108,51 @@ const handler = async (req: Request): Promise<Response> => {
           <p>Best Regards,<br>The Zenith Academy Team</p>
         `,
       });
-      emailPromises.push(userEmailPromise);
-
-      // Await all email sending promises
-      const emailResults = await Promise.allSettled(emailPromises);
-      
-      // Check for errors in email sending
-      emailResults.forEach((result, index) => {
-        if (result.status === 'rejected') {
-          emailErrors.push(`Email ${index === 0 ? 'to admin' : 'to user'} failed: ${result.reason}`);
-        } else {
-          console.log(`Email ${index === 0 ? 'to admin' : 'to user'} sent successfully:`, result.value);
-        }
-      });
-      
-      // If any emails failed, log the errors but still consider the submission successful
-      if (emailErrors.length > 0) {
-        console.error("Email sending errors:", emailErrors);
-      }
-    } catch (emailError) {
-      console.error("Email sending error:", emailError);
-      emailErrors.push(emailError.message || "Unknown email error");
+      console.log("User confirmation email sent successfully:", userEmailResponse);
+      userEmailSent = true;
+    } catch (error) {
+      userEmailError = error;
+      console.error("Error sending user email:", error);
     }
 
-    // Return appropriate response
-    if (emailErrors.length > 0) {
+    // Determine response based on email sending results
+    if (!adminEmailSent && !userEmailSent) {
+      // Both emails failed
+      return new Response(
+        JSON.stringify({ 
+          success: true, // Still consider it a success because form was stored
+          warning: "Contact form submitted but both email notifications failed",
+          adminError: adminEmailError?.message || "Unknown error",
+          userError: userEmailError?.message || "Unknown error",
+          message: "Form submitted successfully but email notifications failed"
+        }),
+        {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    } else if (!adminEmailSent) {
+      // Only admin email failed
       return new Response(
         JSON.stringify({ 
           success: true,
-          warning: "Contact form submitted but there were issues with email notifications",
-          emailErrors: emailErrors,
-          message: "Form submitted successfully but email notification had issues"
+          warning: "Contact form submitted but admin notification email failed",
+          error: adminEmailError?.message || "Unknown error",
+          message: "Form submitted successfully but admin notification failed"
+        }),
+        {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    } else if (!userEmailSent) {
+      // Only user email failed
+      return new Response(
+        JSON.stringify({ 
+          success: true,
+          warning: "Contact form submitted but user confirmation email failed",
+          error: userEmailError?.message || "Unknown error",
+          message: "Form submitted successfully but user confirmation failed"
         }),
         {
           status: 200,
@@ -132,10 +161,11 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Both emails sent successfully
     return new Response(
       JSON.stringify({ 
         success: true,
-        message: "Form submitted successfully and notifications sent"
+        message: "Form submitted successfully and all notifications sent"
       }),
       {
         status: 200,
@@ -144,7 +174,7 @@ const handler = async (req: Request): Promise<Response> => {
     );
     
   } catch (error) {
-    console.error("Error in contact-form function:", error);
+    console.error("Unexpected error in contact-form function:", error);
     return new Response(
       JSON.stringify({ error: error.message || "An unexpected error occurred" }),
       {
