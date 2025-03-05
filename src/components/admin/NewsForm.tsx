@@ -7,11 +7,12 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 // News item type definition
 export interface NewsItem {
-  id: number;
+  id: string;
   title: string;
   date: string;
   excerpt: string;
@@ -27,58 +28,117 @@ export const NewsForm = () => {
   const [image, setImage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Load existing news items - but skip placeholder news
+  // Load existing news items from Supabase
   useEffect(() => {
-    let loadedNews = JSON.parse(localStorage.getItem('newsItems') || '[]') as NewsItem[];
-    
-    // Filter out placeholder news items (they have IDs 1, 2, 3)
-    loadedNews = loadedNews.filter(item => item.id > 3);
-    
-    // Save the filtered list back to localStorage
-    localStorage.setItem('newsItems', JSON.stringify(loadedNews));
-    setNewsItems(loadedNews);
+    const fetchNews = async () => {
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from('news')
+          .select('*')
+          .order('date', { ascending: false });
+
+        if (error) {
+          console.error('Error fetching news:', error);
+          toast.error('Failed to load news items');
+          return;
+        }
+
+        // Transform the data to match our NewsItem interface
+        const transformedData = data.map(item => ({
+          id: item.id,
+          title: item.title,
+          date: item.date,
+          excerpt: item.excerpt,
+          content: item.content,
+          image: item.image
+        }));
+
+        setNewsItems(transformedData);
+      } catch (error) {
+        console.error('Error in news fetch operation:', error);
+        toast.error('An unexpected error occurred while loading news');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNews();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Get existing news from localStorage or initialize with empty array
-    const existingNews = JSON.parse(localStorage.getItem('newsItems') || '[]') as NewsItem[];
-    
-    // Create new news item
-    const newNewsItem: NewsItem = {
-      id: Date.now(), // Simple ID generation based on timestamp
-      title,
-      date: new Date().toISOString().split('T')[0], // Today's date in YYYY-MM-DD format
-      excerpt,
-      content,
-      image: image || '/lovable-uploads/1e472e40-846a-472b-a0b0-f4803003342c.png', // Default image if none provided
-    };
+    try {
+      // Prepare the news item data
+      const newNewsItem = {
+        title,
+        excerpt,
+        content,
+        image: image || '/lovable-uploads/1e472e40-846a-472b-a0b0-f4803003342c.png', // Default image if none provided
+        date: new Date().toISOString().split('T')[0], // Today's date in YYYY-MM-DD format
+      };
 
-    // Add to existing news and save back to localStorage
-    const updatedNews = [...existingNews, newNewsItem];
-    localStorage.setItem('newsItems', JSON.stringify(updatedNews));
-    setNewsItems(updatedNews);
+      // Insert into Supabase
+      const { data, error } = await supabase
+        .from('news')
+        .insert([newNewsItem])
+        .select();
 
-    // Show success message
-    toast.success('News item published successfully!');
-    
-    // Reset form
-    setTitle('');
-    setExcerpt('');
-    setContent('');
-    setImage('');
-    setIsSubmitting(false);
+      if (error) {
+        console.error('Error adding news item:', error);
+        toast.error('Failed to publish news item');
+        return;
+      }
+
+      // Add the new item to the state with the returned ID
+      const insertedItem = {
+        ...newNewsItem,
+        id: data[0].id,
+      };
+      setNewsItems([insertedItem, ...newsItems]);
+
+      // Show success message
+      toast.success('News item published successfully!');
+      
+      // Reset form
+      setTitle('');
+      setExcerpt('');
+      setContent('');
+      setImage('');
+    } catch (error) {
+      console.error('Error in news publish operation:', error);
+      toast.error('An unexpected error occurred');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this news item?')) {
-      const updatedNews = newsItems.filter(item => item.id !== id);
-      localStorage.setItem('newsItems', JSON.stringify(updatedNews));
-      setNewsItems(updatedNews);
-      toast.success('News item deleted successfully!');
+      try {
+        const { error } = await supabase
+          .from('news')
+          .delete()
+          .eq('id', id);
+
+        if (error) {
+          console.error('Error deleting news item:', error);
+          toast.error('Failed to delete news item');
+          return;
+        }
+
+        // Update state after successful deletion
+        const updatedNews = newsItems.filter(item => item.id !== id);
+        setNewsItems(updatedNews);
+        toast.success('News item deleted successfully!');
+      } catch (error) {
+        console.error('Error in news delete operation:', error);
+        toast.error('An unexpected error occurred during deletion');
+      }
     }
   };
 
@@ -138,7 +198,14 @@ export const NewsForm = () => {
           
           <div className="flex gap-4">
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Publishing...' : 'Publish News'}
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Publishing...
+                </>
+              ) : (
+                'Publish News'
+              )}
             </Button>
             <Button 
               type="button" 
@@ -155,7 +222,11 @@ export const NewsForm = () => {
       <div className="bg-white p-6 rounded-lg shadow">
         <h2 className="text-xl font-bold mb-6">Manage Existing News</h2>
         
-        {newsItems.length === 0 ? (
+        {isLoading ? (
+          <div className="flex justify-center py-8">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        ) : newsItems.length === 0 ? (
           <p className="text-gray-500">No news items have been published yet.</p>
         ) : (
           <div className="grid gap-4 md:grid-cols-2">

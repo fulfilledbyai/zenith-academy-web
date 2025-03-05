@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,11 +9,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
 import { useLanguage } from '@/context/LanguageContext';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 // Course type definition
 export interface Course {
-  id: number;
+  id: string;
   title: string;
   type: 'individual' | 'organization' | 'teachers' | 'students';
   description: string;
@@ -37,59 +39,129 @@ export const CourseForm = () => {
   const [startDate, setStartDate] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [courses, setCourses] = useState<Course[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Load existing courses
+  // Load existing courses from Supabase
   useEffect(() => {
-    const loadedCourses = JSON.parse(localStorage.getItem('courses') || '[]') as Course[];
-    setCourses(loadedCourses);
+    const fetchCourses = async () => {
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from('courses')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Error fetching courses:', error);
+          toast.error('Failed to load courses');
+          return;
+        }
+
+        // Transform the data to match our Course interface
+        const transformedData = data.map(item => ({
+          id: item.id,
+          title: item.title,
+          type: item.type as 'individual' | 'organization' | 'teachers' | 'students',
+          description: item.description,
+          duration: item.duration,
+          price: item.price,
+          image: item.image,
+          language: item.language,
+          startDate: item.start_date
+        }));
+
+        setCourses(transformedData);
+      } catch (error) {
+        console.error('Error in courses fetch operation:', error);
+        toast.error('An unexpected error occurred while loading courses');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCourses();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Get existing courses from localStorage or initialize with empty array
-    const existingCourses = JSON.parse(localStorage.getItem('courses') || '[]') as Course[];
-    
-    // Create new course item
-    const newCourse: Course = {
-      id: Date.now(), // Simple ID generation based on timestamp
-      title,
-      type,
-      description,
-      duration,
-      price,
-      image: image || '/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png', // Default image if none provided
-      language,
-      startDate
-    };
+    try {
+      // Prepare the course data
+      const newCourse = {
+        title,
+        type,
+        description,
+        duration,
+        price,
+        image: image || '/lovable-uploads/7128a31c-f6a6-4d35-aeb6-fea616052924.png', // Default image if none provided
+        language,
+        start_date: startDate
+      };
 
-    // Add to existing courses and save back to localStorage
-    const updatedCourses = [...existingCourses, newCourse];
-    localStorage.setItem('courses', JSON.stringify(updatedCourses));
-    setCourses(updatedCourses);
+      // Insert into Supabase
+      const { data, error } = await supabase
+        .from('courses')
+        .insert([newCourse])
+        .select();
 
-    // Show success message
-    toast.success('Course added successfully!');
-    
-    // Reset form
-    setTitle('');
-    setType('individual');
-    setDescription('');
-    setDuration('');
-    setPrice('');
-    setImage('');
-    setLanguage('');
-    setStartDate('');
-    setIsSubmitting(false);
+      if (error) {
+        console.error('Error adding course:', error);
+        toast.error('Failed to add course');
+        return;
+      }
+
+      // Add the new item to the state with the returned ID
+      const insertedCourse = {
+        ...newCourse,
+        id: data[0].id,
+        startDate: data[0].start_date
+      };
+
+      setCourses([insertedCourse, ...courses]);
+
+      // Show success message
+      toast.success('Course added successfully!');
+      
+      // Reset form
+      setTitle('');
+      setType('individual');
+      setDescription('');
+      setDuration('');
+      setPrice('');
+      setImage('');
+      setLanguage('');
+      setStartDate('');
+    } catch (error) {
+      console.error('Error in course add operation:', error);
+      toast.error('An unexpected error occurred');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this course?')) {
-      const updatedCourses = courses.filter(course => course.id !== id);
-      localStorage.setItem('courses', JSON.stringify(updatedCourses));
-      setCourses(updatedCourses);
-      toast.success('Course deleted successfully!');
+      try {
+        const { error } = await supabase
+          .from('courses')
+          .delete()
+          .eq('id', id);
+
+        if (error) {
+          console.error('Error deleting course:', error);
+          toast.error('Failed to delete course');
+          return;
+        }
+
+        // Update state after successful deletion
+        const updatedCourses = courses.filter(course => course.id !== id);
+        setCourses(updatedCourses);
+        toast.success('Course deleted successfully!');
+      } catch (error) {
+        console.error('Error in course delete operation:', error);
+        toast.error('An unexpected error occurred during deletion');
+      }
     }
   };
 
@@ -213,7 +285,12 @@ export const CourseForm = () => {
           
           <div className="flex gap-4">
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Adding...' : 'Add Course'}
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Adding...
+                </>
+              ) : 'Add Course'}
             </Button>
             <Button 
               type="button" 
@@ -230,7 +307,11 @@ export const CourseForm = () => {
       <div className="bg-white p-6 rounded-lg shadow">
         <h2 className="text-xl font-bold mb-6">Manage Existing Courses</h2>
         
-        {courses.length === 0 ? (
+        {isLoading ? (
+          <div className="flex justify-center py-8">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        ) : courses.length === 0 ? (
           <p className="text-gray-500">No courses have been added yet.</p>
         ) : (
           <div className="grid gap-4 md:grid-cols-2">

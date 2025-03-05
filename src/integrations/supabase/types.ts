@@ -36,6 +36,75 @@ export type Database = {
         }
         Relationships: []
       }
+      courses: {
+        Row: {
+          created_at: string
+          description: string
+          duration: string
+          id: string
+          image: string
+          language: string
+          price: string
+          start_date: string
+          title: string
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          duration: string
+          id?: string
+          image: string
+          language: string
+          price: string
+          start_date: string
+          title: string
+          type: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          duration?: string
+          id?: string
+          image?: string
+          language?: string
+          price?: string
+          start_date?: string
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      news: {
+        Row: {
+          content: string
+          created_at: string
+          date: string
+          excerpt: string
+          id: string
+          image: string
+          title: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          date?: string
+          excerpt: string
+          id?: string
+          image: string
+          title: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          date?: string
+          excerpt?: string
+          id?: string
+          image?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

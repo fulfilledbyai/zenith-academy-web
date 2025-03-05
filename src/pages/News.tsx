@@ -1,39 +1,104 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calendar, ChevronRight, ArrowLeft } from 'lucide-react';
+import { Calendar, ChevronRight, ArrowLeft, Loader2 } from 'lucide-react';
 import { NewsItem } from '@/components/admin/NewsForm';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 const News = () => {
   const { t } = useLanguage();
   const { id } = useParams();
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
-    // Load news from localStorage
-    const storedNews = JSON.parse(localStorage.getItem('newsItems') || '[]') as NewsItem[];
-    
-    // Sort news by date (newest first)
-    setNewsItems(storedNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+    const fetchNews = async () => {
+      setIsLoading(true);
+      setError(null);
+      
+      try {
+        const { data, error } = await supabase
+          .from('news')
+          .select('*')
+          .order('date', { ascending: false });
+
+        if (error) {
+          console.error('Error fetching news:', error);
+          setError('Failed to load news items');
+          toast.error('Failed to load news items');
+          return;
+        }
+
+        // Transform the data to match our NewsItem interface
+        const transformedData = data.map(item => ({
+          id: item.id,
+          title: item.title,
+          date: item.date,
+          excerpt: item.excerpt,
+          content: item.content,
+          image: item.image
+        }));
+
+        setNewsItems(transformedData);
+      } catch (error) {
+        console.error('Error in news fetch operation:', error);
+        setError('An unexpected error occurred');
+        toast.error('An unexpected error occurred while loading news');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNews();
   }, []);
 
   // If we have an ID parameter, show the single news article
   if (id) {
-    const newsItem = newsItems.find(item => item.id === parseInt(id));
+    // Convert ID to string for proper comparison since our IDs are now UUIDs
+    const newsItem = newsItems.find(item => item.id === id);
+    const isLoadingOrError = isLoading || error;
     
-    if (!newsItem) return (
-      <Layout>
-        <div className="container mx-auto px-4 py-20 text-center">
-          <h2 className="text-2xl font-bold mb-4">News article not found</h2>
-          <Button asChild variant="default">
-            <Link to="/news">Back to all news</Link>
-          </Button>
-        </div>
-      </Layout>
-    );
+    if (isLoadingOrError) {
+      return (
+        <Layout>
+          <div className="container mx-auto px-4 py-20 text-center">
+            {isLoading ? (
+              <div className="flex flex-col items-center">
+                <Loader2 className="h-10 w-10 animate-spin text-primary mb-4" />
+                <h2 className="text-2xl font-bold">Loading article...</h2>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-2xl font-bold mb-4">Error loading article</h2>
+                <p className="text-red-500 mb-4">{error}</p>
+                <Button asChild variant="default">
+                  <Link to="/news">Back to all news</Link>
+                </Button>
+              </>
+            )}
+          </div>
+        </Layout>
+      );
+    }
+    
+    if (!newsItem) {
+      return (
+        <Layout>
+          <div className="container mx-auto px-4 py-20 text-center">
+            <h2 className="text-2xl font-bold mb-4">News article not found</h2>
+            <Button asChild variant="default">
+              <Link to="/news">Back to all news</Link>
+            </Button>
+          </div>
+        </Layout>
+      );
+    }
     
     return (
       <Layout>
@@ -102,7 +167,19 @@ const News = () => {
       {/* News Feed */}
       <section className="py-16 bg-whiteSmoke">
         <div className="container mx-auto px-4 md:px-6">
-          {newsItems.length === 0 ? (
+          {isLoading ? (
+            <div className="flex justify-center py-10">
+              <Loader2 className="h-12 w-12 animate-spin text-primary" />
+            </div>
+          ) : error ? (
+            <div className="text-center py-10">
+              <h2 className="text-2xl font-bold mb-4 text-red-600">Error Loading News</h2>
+              <p className="text-gray-600 mb-4">{error}</p>
+              <Button onClick={() => window.location.reload()}>
+                Try Again
+              </Button>
+            </div>
+          ) : newsItems.length === 0 ? (
             <div className="text-center py-10">
               <h2 className="text-2xl font-bold mb-4">{t('news.empty')}</h2>
               <p className="text-gray-600 mb-8">{t('news.comingSoon')}</p>

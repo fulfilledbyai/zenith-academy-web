@@ -1,37 +1,107 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NewsForm } from '@/components/admin/NewsForm';
 import { CourseForm } from '@/components/admin/CourseForm';
 import { useLanguage } from '@/context/LanguageContext';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 const Admin = () => {
   const { t } = useLanguage();
-  // Simple authentication state - would be replaced with a proper auth system in production
-  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('adminAuth') === 'true');
+  // Authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  // Simple login handler - this would be replaced with a proper auth system in production
-  const handleLogin = (e: React.FormEvent) => {
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('Error checking auth:', error);
+          return;
+        }
+        
+        setIsAuthenticated(!!data.session);
+      } catch (error) {
+        console.error('Unexpected error in auth check:', error);
+      } finally {
+        setIsAuthChecking(false);
+      }
+    };
+    
+    checkAuth();
+  }, []);
+
+  // Login handler
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple password check (this is just for demo purposes)
-    // In a real application, this would use a proper authentication system
-    if (password === 'admin123') {
-      localStorage.setItem('adminAuth', 'true');
+    setError('');
+    setIsLoggingIn(true);
+    
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+      
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      
       setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Invalid password');
+      toast.success('Logged in successfully');
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('An unexpected error occurred');
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
-    setIsAuthenticated(false);
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        toast.error('Error signing out');
+        console.error('Logout error:', error);
+        return;
+      }
+      
+      setIsAuthenticated(false);
+      toast.success('Logged out successfully');
+    } catch (error) {
+      console.error('Unexpected logout error:', error);
+      toast.error('An unexpected error occurred during logout');
+    }
   };
+
+  if (isAuthChecking) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-16 flex justify-center items-center">
+          <div className="flex flex-col items-center">
+            <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+            <p className="text-lg">Checking authentication...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   if (!isAuthenticated) {
     return (
@@ -41,23 +111,40 @@ const Admin = () => {
             <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
             <form onSubmit={handleLogin}>
               <div className="mb-4">
-                <label htmlFor="password" className="block text-sm font-medium mb-2">Password</label>
-                <input
+                <Label htmlFor="email" className="block text-sm font-medium mb-2">Email</Label>
+                <Input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <Label htmlFor="password" className="block text-sm font-medium mb-2">Password</Label>
+                <Input
                   type="password"
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-rustyRed"
+                  className="w-full"
                   required
                 />
               </div>
               {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
-              <button
+              <Button
                 type="submit"
-                className="w-full bg-rustyRed text-white py-2 px-4 rounded-md hover:bg-rustyRed/90 transition-colors"
+                className="w-full"
+                disabled={isLoggingIn}
               >
-                Login
-              </button>
+                {isLoggingIn ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Logging in...
+                  </>
+                ) : 'Login'}
+              </Button>
             </form>
           </div>
         </div>
@@ -70,12 +157,12 @@ const Admin = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-          <button 
+          <Button 
             onClick={handleLogout}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors"
+            variant="outline"
           >
             Logout
-          </button>
+          </Button>
         </div>
 
         <Tabs defaultValue="news" className="w-full">
