@@ -1,4 +1,5 @@
 
 project_id = "duzsujebnuoasjqgybua"
-[edge_functions.contact-form]
+
+[functions.contact-form]
 verify_jwt = false
