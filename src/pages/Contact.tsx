@@ -39,6 +39,20 @@ const Contact = () => {
         throw new Error(error.message || 'An error occurred while submitting the form');
       }
 
+      if (data.warning) {
+        toast({
+          title: t('contact.toast.success'),
+          description: data.warning || t('contact.toast.description'),
+          duration: 5000,
+        });
+      } else {
+        toast({
+          title: t('contact.toast.success'),
+          description: t('contact.toast.description'),
+          duration: 5000,
+        });
+      }
+
       // Reset form
       setFormData({
         name: '',
@@ -46,17 +60,13 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-
-      toast({
-        title: t('contact.toast.success'),
-        description: t('contact.toast.description'),
-        duration: 5000,
-      });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting form:', error);
+      
+      // Use actual error message instead of translation key for error description
       toast({
         title: t('contact.toast.error'),
-        description: typeof error === 'string' ? error : t('contact.toast.errorDescription'),
+        description: error.message || t('contact.toast.errorDescription'),
         variant: 'destructive',
         duration: 5000,
       });

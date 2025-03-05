@@ -563,6 +563,11 @@ const translations = {
     fr: 'Envoyer le message',
     en: 'Send Message'
   },
+  'contact.form.sending': {
+    am: 'Ուղարկվում է...',
+    fr: 'Envoi en cours...',
+    en: 'Sending...'
+  },
   'contact.form.namePlaceholder': {
     am: 'Ձեր անունը',
     fr: 'Votre nom',
@@ -592,6 +597,16 @@ const translations = {
     am: 'Մենք կպատասխանենք Ձեզ հնարավորինս շուտ:',
     fr: 'Nous vous répondrons dès que possible.',
     en: 'We\'ll get back to you as soon as possible.'
+  },
+  'contact.toast.error': {
+    am: 'Սխալ է տեղի ունեցել',
+    fr: 'Une erreur s\'est produite',
+    en: 'An error occurred'
+  },
+  'contact.toast.errorDescription': {
+    am: 'Խնդրում ենք փորձել կրկին կամ կապվել մեզ հետ անմիջականորեն:',
+    fr: 'Veuillez réessayer ou nous contacter directement.',
+    en: 'Please try again or contact us directly.'
   }
 };
 

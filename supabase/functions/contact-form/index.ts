@@ -60,36 +60,52 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send notification email to admin
-    const adminEmailResponse = await resend.emails.send({
-      from: "Zenith Academy <onboarding@resend.dev>",
-      to: "info@zenithacademy.am", // Change this to the admin email
-      subject: `New Contact Form: ${subject}`,
-      html: `
-        <h1>New Contact Form Submission</h1>
-        <p><strong>From:</strong> ${name} (${email})</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br/>")}</p>
-      `,
-    });
+    try {
+      // Send notification email to admin
+      const adminEmailResponse = await resend.emails.send({
+        from: "Zenith Academy <onboarding@resend.dev>",
+        to: "info@zenithacademy.am", // Change this to the admin email
+        subject: `New Contact Form: ${subject}`,
+        html: `
+          <h1>New Contact Form Submission</h1>
+          <p><strong>From:</strong> ${name} (${email})</p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, "<br/>")}</p>
+        `,
+      });
 
-    // Send confirmation email to the user
-    const userEmailResponse = await resend.emails.send({
-      from: "Zenith Academy <onboarding@resend.dev>",
-      to: email,
-      subject: "Thank you for contacting Zenith Academy",
-      html: `
-        <h1>Thank you for contacting Zenith Academy!</h1>
-        <p>Dear ${name},</p>
-        <p>We have received your message regarding "${subject}". Our team will review it and get back to you as soon as possible.</p>
-        <p>Thank you for your interest in Zenith Academy.</p>
-        <p>Best Regards,<br>The Zenith Academy Team</p>
-      `,
-    });
+      // Send confirmation email to the user
+      const userEmailResponse = await resend.emails.send({
+        from: "Zenith Academy <onboarding@resend.dev>",
+        to: email,
+        subject: "Thank you for contacting Zenith Academy",
+        html: `
+          <h1>Thank you for contacting Zenith Academy!</h1>
+          <p>Dear ${name},</p>
+          <p>We have received your message regarding "${subject}". Our team will review it and get back to you as soon as possible.</p>
+          <p>Thank you for your interest in Zenith Academy.</p>
+          <p>Best Regards,<br>The Zenith Academy Team</p>
+        `,
+      });
 
-    console.log("Admin email result:", adminEmailResponse);
-    console.log("User email result:", userEmailResponse);
+      console.log("Admin email result:", adminEmailResponse);
+      console.log("User email result:", userEmailResponse);
+    } catch (emailError) {
+      console.error("Email sending error:", emailError);
+      // We still return success even if email fails because the submission was stored
+      return new Response(
+        JSON.stringify({ 
+          success: true,
+          warning: "Contact form submitted but email notification failed",
+          message: "Form submitted successfully but email notification failed"
+        }),
+        {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
 
     return new Response(
       JSON.stringify({ 
@@ -105,7 +121,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error) {
     console.error("Error in contact-form function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: error.message || "An unexpected error occurred" }),
       {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
