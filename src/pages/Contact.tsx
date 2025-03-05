@@ -43,7 +43,14 @@ const Contact = () => {
       console.log("Contact form response:", data);
 
       // Show detailed toast based on response
-      if (data.userEmail && !data.userEmail.success) {
+      if (data.userEmail && data.userEmail.testMode) {
+        // We're in test mode and couldn't send to this user
+        toast({
+          title: t('contact.toast.success'),
+          description: data.message,
+          duration: 5000,
+        });
+      } else if (data.userEmail && !data.userEmail.success) {
         toast({
           title: t('contact.toast.success'),
           description: "Your form was submitted, but we couldn't send you a confirmation email. We'll still contact you soon.",
