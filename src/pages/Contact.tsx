@@ -1,25 +1,68 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
+import { MapPin, Phone, Mail, Send, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: t('contact.toast.success'),
-      description: t('contact.toast.description'),
-      duration: 5000,
-    });
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('contact-form', {
+        body: formData
+      });
+
+      if (error) {
+        throw new Error(error.message || 'An error occurred while submitting the form');
+      }
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
+      toast({
+        title: t('contact.toast.success'),
+        description: t('contact.toast.description'),
+        duration: 5000,
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: t('contact.toast.error'),
+        description: typeof error === 'string' ? error : t('contact.toast.errorDescription'),
+        variant: 'destructive',
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -83,32 +126,66 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">{t('contact.form.name')}</Label>
-                    <Input id="name" placeholder={t('contact.form.namePlaceholder')} required />
+                    <Input 
+                      id="name" 
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder={t('contact.form.namePlaceholder')} 
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">{t('contact.form.email')}</Label>
-                    <Input id="email" type="email" placeholder={t('contact.form.emailPlaceholder')} required />
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder={t('contact.form.emailPlaceholder')} 
+                      required 
+                    />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="subject">{t('contact.form.subject')}</Label>
-                  <Input id="subject" placeholder={t('contact.form.subjectPlaceholder')} required />
+                  <Input 
+                    id="subject" 
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder={t('contact.form.subjectPlaceholder')} 
+                    required 
+                  />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="message">{t('contact.form.message')}</Label>
                   <Textarea 
                     id="message" 
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder={t('contact.form.messagePlaceholder')} 
                     className="min-h-[150px]" 
                     required 
                   />
                 </div>
                 
-                <Button type="submit" className="bg-rustyRed hover:bg-rustyRed/90 text-white">
-                  <Send className="mr-2 h-4 w-4" />
-                  {t('contact.form.send')}
+                <Button 
+                  type="submit" 
+                  className="bg-rustyRed hover:bg-rustyRed/90 text-white"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      {t('contact.form.sending')}
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-4 w-4" />
+                      {t('contact.form.send')}
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
